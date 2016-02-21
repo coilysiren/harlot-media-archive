@@ -1,10 +1,10 @@
 <?php
 
-$devMode = false
+$devMode = false;
 
 # mysql settings
-$user = 'catscatscatscatscats'
-$password = 'catscatscatscatscatscatscatscatscatscatscatscatscatscatscatscats'
-$database = 'catscatscatscatscatscatscatscats'
+$user = 'catscatscatscatscats';
+$password = 'catscatscatscatscatscatscatscatscatscatscatscatscatscatscatscats';
+$database = 'catscatscatscatscatscatscatscats';
 
 ?>
