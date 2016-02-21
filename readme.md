@@ -10,7 +10,8 @@ get craft
 
     curl -L http://craftcms.com/latest.tar.gz?accept_license=yes -o craft_install.tar.gz
     sudo tar -xvzf craft_install.tar.gz
-    rm -f craft_install.tar.gz
+    sudo rm -f craft_install.tar.gz readme.txt
+    sudo mv public public_html
 
 sync source code
 
