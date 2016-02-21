@@ -13,19 +13,14 @@
  # craft/app/templates/ instead.
  #
  # See this page for more details on how Craft routes requests:
- # http://buildwithcraft.com/docs/routing
+ # http://craftcms.com/docs/routing
  #}
 
-{% extends "_base" %}
+{% extends "_layout" %}
 {% set title = "404" %}
 
-{% block main_block %}
-    <main class='col-xs-12'>
-        <div>
-            <h2>Page not found</h2>
-            <p>Contact a site administrator to report this issue</p>
-        </div>
-    </main>
-{% endblock %}
+{% block content %}
+	<h1>Page not found</h1>
 
-{% block aside_block %}{% endblock %}
+	<p>What’s worse, a hilarious 404 page can’t be found either.</p>
+{% endblock %}
