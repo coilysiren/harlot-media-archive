@@ -9,9 +9,10 @@ php + addons
 get craft
 
     curl -L http://craftcms.com/latest.tar.gz?accept_license=yes -o craft_install.tar.gz
-    sudo tar -xvzf craft_install.tar.gz
-    sudo rm -f craft_install.tar.gz readme.txt
-    sudo mv public public_html
+    tar -xvzf craft_install.tar.gz
+    rm -f craft_install.tar.gz readme.txt
+    mv public public_html
+    sudo chmod 0777 -R craft/
 
 sync source code
 
@@ -30,6 +31,10 @@ setup environment variables
     cp craft/config/env-example.php craft/config/.env.php
     $EDITOR craft/config/.env.php
 
+setup web server
+
+    # set web root to the harlot-media/public_html
+
 install craft
 
-    #
+    # localhost/index.php?p=admin/install
