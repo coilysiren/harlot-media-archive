@@ -1,0 +1,23 @@
+{% header "Content-Type: application/xml" %}
+{% set rss = craft.entries.section('articles') %}
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Harlot</title>
+        <link>http://harlot.media/</link>
+        <description>The Dirtiest Well-known Secret</description>
+        <language>en-us</language>
+        <pubDate>{{ now.rss }}</pubDate>
+        <lastBuildDate>{{ now.rss }}</lastBuildDate>
+        {% for item in rss %}
+            <item>
+                <title>{{ item.title }}</title>
+                <link>{{ item.url }}</link>
+                <pubDate>{{ item.postDate.rss }}</pubDate>
+                <author>{{ item.writer.first.name }}</author>
+                <guid>{{ item.url }}</guid>
+                <description>{{ item.description }}</description>
+            </item>
+        {% endfor %}
+    </channel>
+</rss>

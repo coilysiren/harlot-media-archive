@@ -1,0 +1,18 @@
+{% extends "_base" %}
+{% set query = craft.request.getParam('search') %}
+{% set entries = craft.entries({search: query}).order('dateCreated').section('articles') %}
+
+{% block main_content %}
+
+    {% if entries | length %}
+        <section class="tagsPage">
+            <h2 class="headingUnderline">Search results for: {{ query }}</h2>
+            <ul class="articleList row">
+                {{ macros.articleList(entries) }}
+            </ul>
+        </section>
+    {% else %}
+        <h2>Could not find any articles!</h2>
+    {% endif %}
+
+{% endblock %}

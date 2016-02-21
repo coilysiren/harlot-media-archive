@@ -1,0 +1,48 @@
+{% set entries = craft.entries.section(['about', 'contact', 'contentWarnings', 'commentPolicy']).order('order') %}
+
+<footer>
+    <div class="container standard">
+
+        <div class="row">
+
+            <div id='footer-button' class="col-sm-5">
+                <figure class="support-button support-button-lower">
+                    <a href="/donate">
+                        <img src="/uploads/assets/support_lower.png" alt="Support Us" title="Support Us" width="100%">
+                    </a>
+                </figure>
+            </div>
+
+            <div class="content col-sm-7">
+
+                <div class="header">
+                    <span>{{ footerContent.text }}</span>
+                </div>
+
+                <div class="links">
+                    <div>
+                        <span class='header'><strong>ABOUT US</strong></span>
+                        {% for entry in entries %}
+                        <div><a href='{{ entry.url }}'>{{ entry.title }}</a></div>
+                        {% endfor %}
+                        <div><a href='/donate'>Support Us</a></div>
+                    </div>
+
+                    <div>
+                        <span class='header'><strong>FOLLOW US</strong></span>
+                        {% for link in socialLinks.links %}
+                        <div><a href='{{ link.siteUrl }}' target="_blank">{{ link.description }}</a></div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class='copyright'>
+            <span>Copyright {{ now.year }} HARLOT LLC. All Rights Reserved.</span>
+        </div>
+
+    </div>
+</footer>

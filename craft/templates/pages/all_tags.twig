@@ -1,0 +1,19 @@
+<h1>List of all tags</h1>
+
+
+{% set entries = craft.entries.section('articles').limit(null) %}
+<h3>Tags Used in Articles</h3>
+<ul>
+    {% for tag in craft.tags.relatedTo(entries) %}
+    <li>{{ tag }}</li>
+    {% endfor %}
+</ul>
+
+
+{% set authors = craft.users.group('ugroupAuthors').limit(null) %}
+<h3>Tags Used for Users</h3>
+<ul>
+    {% for tag in craft.tags.relatedTo(authors) %}
+    <li>{{ tag }}</li>
+    {% endfor %}
+</ul>

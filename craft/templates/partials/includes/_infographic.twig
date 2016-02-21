@@ -1,0 +1,90 @@
+{#
+
+{% set recent_entries = craft.entries.section('articles').limit(null) %}
+{% set recent_authors = craft.users.group('ugroupAuthors').relatedTo(recent_entries).limit(null) %}
+{% set tags = craft.tags.relatedTo(recent_authors).group('identities').limit(null) %}
+
+var graphdata = {
+    "children": [
+        {% for tag in tags %}
+            {% set authors = craft.users.group('ugroupAuthors').relatedTo('and', tag, recent_entries) %}
+
+#}
+
+{% set all_users = craft.users.limit(null) %}
+{% set tags = craft.tags.relatedTo(all_users).group('identities').limit(null) %}
+<script src="//d3js.org/d3.v3.min.js"></script>
+
+<script>
+    var graphdata = {
+        "children": [
+            {% for tag in tags %}
+                {% set tagged_users = craft.users.relatedTo(tag) %}
+                {% set count = tagged_users.total %}
+                {% set value = (100*(1-2.7**(-0.2*count)))|round %}
+                {% set usernames = [] %}
+                {% for user in tagged_users %}
+                    {% set usernames = usernames|merge([user.username]) %}
+                {% endfor %}
+                    {
+                        "name": "{{ tag.name|lower }}",
+                        "title": "{{ count }} {{ tag.name|lower }}",
+                        "slug": "{{ tag.slug }}",
+                        "value": {{ value }},
+                        "count": {{ count }},
+                        "users": "{{ usernames|join(', ') }}",
+                        "tag_id": {{ tag.id }},
+                    },
+            {% endfor %}
+        ]
+    }
+
+    var bubble = d3.layout.pack()
+        .sort(null)
+
+    var svg = d3.select("#infographic").append("svg")
+        .attr("class", "bubble")
+
+    var node = svg.selectAll(".node")
+        .data(bubble.nodes(graphdata)
+            .filter(function(d) { return !d.children; }))
+        .enter().append("g")
+        .attr("class", "node")
+        .attr("title", function(d) {return d.name; })
+        .attr("alt", function(d) {return d.name; })
+
+    node.append("circle")
+    node.append("text")
+
+    function draw() {
+        var diameter = +d3.select("#infographic").style("width").slice(0,-2)
+        if (diameter < 400)
+            diameter = 400
+
+        var bubble = d3.layout.pack()
+            .sort(null)
+            .size([diameter, diameter])
+            // .radius(d3.scale.linear().domain([0,100]).range([30,100]))
+
+        var svg = d3.select("#infographic svg")
+            .attr("width", diameter)
+            .attr("height", diameter)
+
+        var node = svg.selectAll(".node")
+            .data(bubble.nodes(graphdata)
+                .filter(function(d) { return !d.children; }))
+            .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+
+        node.selectAll("circle")
+            .attr("r", function(d) { return d.r; })
+
+        node.selectAll("text")
+            .attr("dy", ".3em")
+            .style("text-anchor", "middle")
+            .text(function(d) { return d.title.substring(0, d.r / 4); })
+        }
+
+    draw()
+    d3.select(window).on('resize', draw)
+
+</script>

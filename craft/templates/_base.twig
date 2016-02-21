@@ -1,0 +1,61 @@
+{% import "_macros" as macros %}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+
+<head>
+    {% include 'partials/_head' %}
+</head>
+
+<body>
+
+    <div id='content-top' class="body-flex">
+        {% block container_type %}<div class="container standard">{% endblock %}
+            <div class='row'>
+
+                <div id="nav-column" class='col-sm-5 col-md-4'>
+                    {% include 'partials/_nav' %}
+                </div>
+
+                <div id='header-column' class='col-sm-7 col-md-8'>
+                    {% include 'partials/_header' %}
+                </div>
+
+                {% block main_block %}
+                    <div id="main-column" class='col-sm-7 col-md-8'>
+                        <main class='container-fluid'>
+                            <div class='row'>
+                                {% block main_content %}{% endblock %}
+                            </div>
+                        </main>
+                    </div>
+                {% endblock %}
+
+                {% block aside_block %}
+                    <div id="sidebar-column" class='col-sm-5 col-md-4'>
+                        <aside>
+                            {% block aside_content %}
+                                {% include 'aside/_support_upper' %}
+                                {% include 'aside/_subscribe' %}
+                                {% include 'aside/_featured' %}
+                                {% include 'aside/_contributors' %}
+                            {% endblock %}
+                        </aside>
+                    </div>
+                {% endblock %}
+
+            </div>
+        </div>
+    </div>
+
+    <div id='ripped-border' class="body-flex"><div class="container standard"></div></div>
+
+    <div id='content-bottom' class="body-flex">
+        {% include 'partials/_footer' %}
+    </div>
+
+    {% include 'partials/_footer_resources' %}
+
+</body>
+
+</html>

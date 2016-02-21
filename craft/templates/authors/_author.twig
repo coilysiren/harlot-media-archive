@@ -1,0 +1,49 @@
+{% extends "_base" %}
+{% set user = craft.users.username( craft.request.segment(2) ).first() %}
+{% set entries = craft.entries.relatedTo(user).limit(7) %}
+{% set tags = craft.tags.relatedTo(entries).group('subjects').limit(10) %}
+
+{% if not user %}
+    {% exit 404 %}
+{% endif %}
+
+{% block main_content %}
+
+    <section class="authorProfile">
+        <h2 class="headingUnderline">Author Profile</h2>
+        <div class="content">
+            <div class="picture">{{ macros.authorImage(user, 600) }}</div>
+            <div class="text">
+                <h3>{{ user.name }}{% if user.userTitle %}, {{ user.userTitle }}{% endif %}</h3>
+                <div class="description">{{ user.userBio }}</div>
+                <div class="social">
+                    {% for link in user.links %}
+                        <a href='{{ link.siteUrl }}' title='{{ link.description }}'><i class='fa {{ link.icon.class }}'></i></a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% if entries | length %}
+
+        {% if tags | length %}
+            <section class='authorTopics'>
+                <h2>Author's Topics</h2>
+                <ul class='content'>
+                    {% for tag in tags %}
+                        <li class='tag'>{{ macros.showTag(tag) }}</li>
+                    {% endfor %}
+                </ul>
+            </section>
+        {% endif %}
+
+        <section>
+            <h2>All Posts</h2>
+            <ul class="articleList row">
+                {{ macros.articleList(entries, false, 4) }}
+            </ul>
+        </section>
+    {% endif %}
+
+{% endblock %}

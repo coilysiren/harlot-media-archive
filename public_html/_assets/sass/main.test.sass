@@ -1,0 +1,1126 @@
+@import url(/_assets/css/fonts.css)
+
+$mobile-verticle-padding: 60px
+
+$mobile-breakpoint: 768px
+$tablet-breakpoint: 992px
+$desktop-breakpoint: 1220px
+
+$gray: rgb(86, 88, 90)
+$red: #96052f
+$beige: #FAF6F3
+$yellow: #E2C75D
+$brown: #AB9154
+$darkgray: #37393B
+$white-basic: rgb(255, 255, 255)
+$white-faded: rgba($white-basic, 0.95)
+
+$font-text: "LatoWeb", "cronos-pro-subhead", sans-serif
+$font-heading: "LatoWebBold", "Arial", sans-serif
+$font-excellentia: "excellentiaregular", "mrs_lolitaregular", italic
+$font-mslolita: "mrs_lolitaregular", italic
+$font-labelmachine: "label_machine", monospace
+
+html, body, article
+    font-size: 20px
+    line-height: 30px
+
+    @media (max-width: $mobile-breakpoint)
+        font-size: 18px
+        line-height: 27px
+
+html, body
+    height: 100%
+    width: 100%
+    margin: 0
+    padding: 0
+    text-rendering: optimizelegibility
+    background-color: $beige
+
+    @media (max-width: $mobile-breakpoint)
+        overflow-x: hidden
+
+#catscatscats
+    display: none
+
+#ripped-border
+    background-image: url(/uploads/assets/ripped-1.png)
+    background-size: auto 101%
+    margin-bottom: -35px
+    height: 40px
+    position: relative
+    background-repeat: repeat-x
+
+#content-top
+    background-color: $beige
+    min-height: 800px
+    margin-bottom: -1px
+    padding-bottom: 30px
+    overflow-x: hidden
+
+#content-bottom
+    background-color: $red
+    background-image: url(/uploads/assets/background-red.png)
+
+.reference-point
+    width: 0
+    height: 0
+    position: relative
+
+    > *
+        position: absolute
+
+.row figure
+    margin: 30px 0
+
+p
+    margin: 30px 0
+
+a
+    color: $red
+
+    &:visited
+        color: $red
+
+    &:hover
+        color: $yellow
+
+body
+    font-family: $font-text
+
+h1, h2, h3, h4, h5, .heading
+    font-family: $font-heading
+    color: $red
+
+    a &:hover
+        color: $yellow
+
+header
+    font-family: $font-excellentia
+
+    &.arc
+        background-image: url(/uploads/assets/underline.png)
+        background-repeat: no-repeat
+        background-position: 0 40px
+        background-size: 6.5em
+        margin-left: -5px
+        padding-left: 10px
+
+.subtext
+    &, &:visited
+        color: $gray
+        font-size: 0.70em
+
+.content-warning-shortname
+    &, &:visited, &:hover, &:active
+        color: black
+        font-family: $font-labelmachine
+        font-size: 1.25em
+
+.dropdown-backdrop
+    z-index: 1
+
+.body-flex
+
+
+textarea
+    width: 100%
+
+.hide-all
+    display: none
+
+.hide-large
+    @media (min-width: $mobile-breakpoint)
+        display: none
+
+.hide-small
+    @media (max-width: $mobile-breakpoint)
+        display: none
+
+*
+    @media (max-width: $mobile-breakpoint)
+        transition: none !important
+
+#nav-column
+    float: right
+
+    @media (max-width: $mobile-breakpoint)
+        width: 100%
+
+#margo-nav
+    position: absolute
+
+#margo
+    margin-left: -100%
+
+    @media (min-width: $mobile-breakpoint)
+        margin-right: 45px
+
+    @media (max-width: $mobile-breakpoint)
+        margin-left: 0
+        margin-top: -20px
+
+    img
+        width: 80%
+        float: right
+
+$nav-shadow-1: 0 0 8px 10px rgba(0,0,0,0.075)
+$nav-shadow-2: 0 0 3px 5px rgba(0,0,0,0.1)
+$nav-shadow-3: 0 0 0 2px rgba(0,0,0,0.05)
+
+#nav-top-shadow
+    $height: 350px
+
+    position: absolute
+    height: $height
+    width: 70px
+    top: -$height+20px-1px
+    padding-bottom: 20px
+    padding-right: 20px
+    overflow-x: hidden
+
+    div
+        width: 100%
+        height: 100%
+        border-bottom-right-radius: 5px
+        box-shadow: $nav-shadow-1, $nav-shadow-2, $nav-shadow-3
+
+#nav-side-shadow
+    overflow: hidden
+    height: 100%
+    padding-top: 70px
+
+    div
+        height: 200%
+        width: 150%
+        margin-top: -100px
+        box-shadow: inset $nav-shadow-1, inset $nav-shadow-2, inset $nav-shadow-3
+
+$ad_background: rgba(0,0,0,0.025)
+
+.advertisement
+    margin-left: -15px
+    background: $ad_background
+
+    @media (min-width: $mobile-breakpoint)
+        border-radius: 20px
+
+.sidebar-ad
+    text-align: center
+    padding-top: 0
+    padding-bottom: 10px
+
+    header
+        line-height: 0.8em
+        font-size: 2em
+        padding-top: 10px
+        border-bottom: 1px solid rgba($red,0.1)
+
+    .flex
+        display: flex
+        align-items: center
+        justify-content: center
+
+    @media (max-width: $mobile-breakpoint)
+        margin-top: $mobile-verticle-padding/2
+
+.header-ad
+    margin-top: 0
+
+    .reference-point
+        width: auto
+
+        @media (max-width: $mobile-breakpoint)
+            text-align: center
+
+        @media (min-width: $mobile-breakpoint)
+            text-align: left
+
+        div
+            background: $ad_background
+            position: static
+            display: inline-block
+
+            @media (max-width: $mobile-breakpoint)
+                display: block
+                margin-right: -15px
+                padding-right: 15px
+
+            @media (min-width: $mobile-breakpoint)
+                border-radius: 10px
+                padding: 0 10px
+
+        header
+            text-align: center
+            font-size: 1.5em
+            color: $red
+
+#nav-bottom-fade
+    position: absolute
+    bottom: 0
+    height: 30px
+    width: 15px
+    background-image: linear-gradient(to top, $beige 10px, transparent)
+
+.nav-container
+    height: 100%
+    width: 50px
+    position: absolute
+    right: 0
+    top: 65%
+
+    @media (max-width: $mobile-breakpoint)
+        width: 120%
+        margin: -30px 0 0 -10%
+        top: 10px
+        right: 0
+        left: 0
+
+nav
+    position: absolute
+    margin-bottom: 0
+    padding: 1px 2px
+    width: 100%
+    height: 100%
+
+    @media (max-width: $mobile-breakpoint)
+        margin-left: 8%
+        width: 92%
+
+    .nav-button
+        display: block
+        background-color: $darkgray
+        margin-top: 0
+        padding: 0
+
+    #nav-menu-button
+        display: block
+        background-color: $darkgray
+        margin-top: 0
+        padding: 10px 0 0
+        z-index: 200
+
+        @media (max-width: $mobile-breakpoint)
+            margin-top: 30px
+
+        span
+            display: block
+            height: 3px
+            margin: 0 auto 5px
+            width: 60%
+            background-color: $brown
+            border-radius: 2px
+            transition: background-color 0.1s
+
+        &:focus
+            outline: none
+
+        &:hover span, &:focus span
+            background-color: $red
+
+    &.open #nav-menu-button
+        span
+            background-color: $red
+
+    #nav-menu
+        position: absolute
+        text-align: center
+        height: 0
+        width: 0
+        top: 0
+        right: 40px
+        background-color: $darkgray
+        overflow: hidden
+        transition-property: right
+        transition-duration: 0.1s
+        z-index: 100
+
+        ul
+            @media (max-width: $mobile-breakpoint)
+                padding: 5px
+            @media (min-width: $mobile-breakpoint)
+                padding: 5px 20px
+
+        li
+            &:not(:last-child)
+                border-bottom: 1px $red solid
+
+            a
+                width: 100%
+                display: block
+                padding: 7px 2px
+                margin: 0
+                min-width: 300px
+                color: $brown
+
+                @media (max-width: $mobile-breakpoint)
+                    text-align: left
+
+                &:hover, &:focus
+                    color: $red
+                    background-color: rgba($brown,0.1)
+                    text-decoration: none
+
+    &.open #nav-menu
+        display: inherit
+        right: 100px
+        height: auto
+        width: auto
+
+        @media (max-width: $mobile-breakpoint)
+            left: -30px
+            right: auto
+            width: 110%
+            padding: 40px 15% 0 100px
+            min-height: 300px
+
+    .nav-button
+        display: block
+        position: relative
+        background-color: $darkgray
+        color: $brown
+        width: 40px
+        height: 40px
+        border: none
+        border-radius: 4px
+        box-shadow: 1px 2px 0 1px rgba(0,0,0,0.1)
+        margin: 6px 0
+        padding: 0
+        z-index: 200
+
+        @media (max-width: $mobile-breakpoint)
+            display: none
+
+        &:after
+            content: ""
+            display: block
+            padding-top: 100%
+
+        i
+            color: $brown
+            background-color: transparent
+
+        &:hover, &:focus
+            text-decoration: none
+        &:hover i, &:focus i
+            color: $red
+
+    &.open .nav-button
+        @media (max-width: $mobile-breakpoint)
+            display: block
+
+ul, li
+    list-style-type: none
+    margin: 0
+    padding: 0
+
+ol
+    padding-left: 20px
+
+    li
+        text-align: left
+        list-style: decimal outside
+        display: list-item
+        padding: 20px 10px
+
+ul
+    h3
+        margin: 0
+        padding: 0
+
+    figure
+        margin: 0
+
+// .container.standard
+//     @media (min-width: $mobile-breakpoint) and (max-width: $tablet-breakpoint)
+//         width: 850px
+
+.profilePicture
+    border: 1px solid rgba(200, 200, 200, 0.8)
+
+#header-column
+    margin-bottom: 40px
+
+    @media (max-width: $desktop-breakpoint)
+        margin-bottom: 80px
+
+header.title
+    font-size: 55px
+    line-height: 45px
+    margin-top: 40px
+    width: 70%
+    padding-bottom: 60px
+
+    @media (max-width: $mobile-breakpoint)
+        padding-bottom: $mobile-verticle-padding/2
+
+    @media (min-width: $mobile-breakpoint) and (max-width: $desktop-breakpoint)
+        padding-bottom: 100px
+
+    a
+        color: $gray
+
+        &:visited
+            color: $gray
+
+        &:hover, &:focus
+            color: $red
+            text-decoration: none
+
+    @media (max-width: $mobile-breakpoint)
+        margin-top: 35%
+        width: 40%
+
+        span
+            white-space: nowrap
+            display: inline-block
+
+#sidebar-column
+    @media (min-width: $mobile-breakpoint)
+        margin-top: 260px
+        &.inline-aside
+            margin-top: 50%
+
+    @media (max-width: $desktop-breakpoint)
+        margin-top: 120px
+
+    @media (max-width: $mobile-breakpoint)
+        padding-right: 0
+        margin-top: $mobile-verticle-padding
+
+aside
+    header
+        color: $red
+        margin-bottom: 5px
+        font-size: 3em
+        font-weight: normal
+        line-height: 1.3em
+        width: 100%
+
+        @media (max-width: $mobile-breakpoint)
+            width: 100%
+
+    .content
+        margin-top: 15px
+
+    section
+        padding-top: 60px
+        padding-bottom: 25px
+        margin-right: -15px
+
+.headingUnderline
+    border-bottom: 1px solid $red
+
+#featured
+    li
+        display: flex
+        padding: 0 0 25px
+
+        a
+            height: 100%
+
+    .headerImage
+        max-width: 25%
+
+        img
+            height: 100%
+            object-fit: cover
+
+    .articleText
+        padding-left: 10px
+        display: flex
+        flex-direction: column
+        justify-content: center
+
+        .heading
+            font-size: 0.87em
+            margin: 0
+            line-height: 1.2rem
+
+.contributor-list
+    li
+        text-align: center
+        margin-top: 15px
+
+.user-card
+    .picture
+        padding: 0 5px 5px
+        margin: 0 auto
+        max-width: 150px
+
+    .title
+        color: $gray
+
+    a:hover, a:focus
+        text-decoration: none
+        color: orange
+
+        > *
+            text-decoration: none
+            color: orange
+
+#page-donate
+    h2
+        @media (min-width: $mobile-breakpoint)
+            width: 50%
+
+.aboutPage
+
+    ol
+        padding: 0
+        margin: 0
+        width: 100%
+
+    #sidebar-column
+        @media (max-width: $mobile-breakpoint)
+            margin-top: 40px
+        @media (min-width: $mobile-breakpoint)
+            margin-top: 60%
+
+    .writers a:hover, .writers a:focus
+        text-decoration: none
+        color: orange
+
+        > *
+            text-decoration: none
+            color: orange
+
+main.container-fluid.main-full
+    overflow-x: hidden
+
+    @media (min-width: $mobile-breakpoint)
+        padding-right: 50px
+
+    .row
+        > div
+            padding: 0
+
+main.container-fluid
+    margin-left: -15px
+    margin-right: -15px
+
+    section
+        @media (max-width: $mobile-breakpoint)
+            padding: 0 15px $mobile-verticle-padding
+
+    section:last-child
+        @media (max-width: $mobile-breakpoint)
+            padding-bottom: 0
+
+    > *
+        padding-top: 100px
+        padding-bottom: $mobile-verticle-padding
+
+        @media (max-width: $tablet-breakpoint)
+            padding-top: $mobile-verticle-padding
+
+        @media (min-width: $mobile-breakpoint)
+            padding-right: 15px
+
+    > *:last-child
+        @media (max-width: $tablet-breakpoint)
+            padding-bottom: 0
+
+    a
+        color: $red
+        text-decoration: none
+
+        &:visited
+            color: $red
+            text-decoration: none
+
+        &:hover, &:focus
+            color: #deab17
+
+figure.support-button-upper
+    margin: 15px 60px 0 0
+
+    @media (max-width: $mobile-breakpoint)
+        margin: 0
+
+#infographic
+    font-size: 16px
+    overflow-x: auto
+    padding: 0
+    margin: 30px 0
+
+    svg
+        margin: 0 auto
+        display: block
+
+    $circle-yellow: #F0D77C
+    $circle-red: #BF757F
+    $circle-gray: #BFC0BE
+    $circle-brown: #BDA4A4
+
+    g:nth-child(3n) circle
+        fill: $circle-red
+    g:nth-child(3n+1) circle
+        fill: $circle-yellow
+    g:nth-child(3n+2) circle
+        fill: $circle-brown
+
+
+label
+    font-weight: bold
+    width: 95%
+    display: inline-block
+
+.subscribe
+    header
+        margin-top: 50px
+        line-height: 0.8em
+
+        @media (max-width: $mobile-breakpoint)
+            margin-top: 0
+
+    form
+        width: 100%
+
+    .input-area
+        display: flex
+
+input
+    display: inline-block
+
+    &.input
+        width: 60%
+        max-width: 220px
+
+    &:focus
+        box-shadow: 0 0 1px 1px $red
+
+    &.button
+        font-size: 0.8em
+        background-color: $darkgray
+        color: $yellow
+        border: none
+        font-weight: bold
+        padding: 4px 15px
+        margin-left: 2px
+        margin-top: 5px
+        margin-bottom: 5px
+
+        &:hover, &:focus
+            color: $red
+            outline: 1px solid $yellow
+
+@mixin articleShadow
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2)
+
+.articleList
+
+    //////////////
+    // slantbox //
+    //////////////
+
+    .single .slantbox
+        padding-right: 0
+
+    .slantbox
+        bottom: 0
+        width: 100%
+        pointer-events: none
+
+        .content
+            background-color: $white-basic
+            height: 100%
+            pointer-events: all
+
+        .border-top
+            pointer-events: none
+            bottom: 0
+            border-bottom: solid $white-basic
+            border-left: solid transparent
+
+    .single .slantbox
+        @media (min-width: $tablet-breakpoint)
+            position: absolute
+            left: 7.5%
+            width: 85%
+            top: auto
+            bottom: 30%
+
+            .content
+                background-color: $white-faded
+            .border-top
+                border-bottom-color: $white-faded
+            .border-bottom
+                float: right
+                top: 0
+                border-top: solid $white-faded
+                border-right: solid transparent
+
+    //////////////////
+    // not slantbox //
+    //////////////////
+
+    .article-preview-container
+        display: flex
+        flex-direction: column
+        width: 100%
+        height: 100%
+        overflow: hidden
+        background-color: $white-faded
+        @include articleShadow
+
+        > *
+            display: block
+
+        .header-image
+            flex: 1
+            background-size: cover
+            min-height: 200px
+
+        .slantbox
+            flex: 1.25
+
+    img
+        width: 100%
+        object-fit: cover
+
+    li
+        margin-bottom: 60px
+
+        @media (min-width: $tablet-breakpoint) and (max-width: $desktop-breakpoint)
+            height: 550px
+
+        @media (min-width: $desktop-breakpoint)
+            height: 550px
+
+        @media (max-width: $mobile-breakpoint)
+            margin-bottom: 120px
+
+            &:last-child
+                margin-bottom: 0
+
+    .content
+        padding: 15px 15px 10px
+
+        h2
+            margin: 0
+
+        .subtext
+            margin-bottom: 5px
+
+        @media (min-width: $mobile-breakpoint)
+            h2
+                font-size: 1rem
+
+            .description
+                font-size: 0.8em
+                line-height: 1.1rem
+
+main .articlesByTag
+    margin: 0
+    padding-bottom: 60px
+
+    @media (max-width: $mobile-breakpoint)
+        padding-top: $mobile-verticle-padding
+        padding-bottom: $mobile-verticle-padding
+
+    .heading
+        color: $red
+        margin-bottom: 10px
+
+    .content
+        background-color: $white-faded
+        display: flex
+        justify-content: space-around
+        flex-wrap: wrap
+        padding: 25px 5%
+        @include articleShadow
+
+    li
+        a
+            margin: 10px
+            font-size: 2em
+            display: inline-block
+            color: rgb(50, 50, 50)
+
+            &:hover
+                color: orange
+
+        &:nth-child(2n) a
+            font-size: 1.5em
+
+            &:not(:hover)
+                color: rgb(125, 125, 125)
+
+        &:nth-child(3n) a:not(:hover)
+            color: $red
+
+.authorProfile
+    margin-bottom: 20px
+
+    .content
+        margin-top: 20px
+        @media (min-width: $mobile-breakpoint)
+            display: flex
+
+    .picture
+        margin-bottom: 25px
+        max-width: 400px
+
+        @media (max-width: $mobile-breakpoint)
+            margin: 0 auto
+
+        @media (min-width: $mobile-breakpoint)
+            margin: 0
+            padding-right: 30px
+
+.authorTopics
+    margin-bottom: 40px
+
+    .content
+        margin: 10px -15px 0
+
+    li.tag
+        margin: 5px 15px
+        display: inline-block
+        font-weight: bold
+        background-color: #757E7A
+        border-radius: 1px
+
+        a
+            color: white
+            padding: 2px 15px
+
+            &:hover
+                color: $red
+                text-decoration: none
+
+article
+
+    margin: 0
+
+    h1
+        display: inline
+        font-size: 2em
+        width: 100%
+
+    figure
+        .caption
+            font-size: 0.7em
+            line-height: 1.4em
+            color: $gray
+            text-align: center
+            p
+                margin-top: 15px
+                margin-bottom: 0
+
+    figure.imageHalf, figure.imageThird
+        margin-top: 15px
+        margin-bottom: 20px
+        padding-top: 0
+        padding-bottom: 0
+
+    figure.imageHalf.left, figure.imageThird.left
+        padding-right: 20px
+
+    figure.imageHalf.right, figure.imageThird.right
+        padding-left: 20px
+
+    figure.headerImage
+        margin: 0
+
+        @media (max-width: $mobile-breakpoint)
+            margin: 0 -15px
+
+    .article-content > .container-fluid > .row
+        > :first-child
+            font-style: normal
+            font-weight: bold
+            color: $red
+
+        > blockquote:first-child
+            background-color: transparent
+
+    .article-info
+        float: left
+        margin: 40px 20px 40px 0
+        text-align: left
+        display: flex
+        justify-content: space-around
+
+        @media (max-width: $tablet-breakpoint)
+            width: 100%
+            margin-top: 0
+            margin-bottom: 0
+
+        @media (min-width: $tablet-breakpoint)
+            flex-direction: column
+
+        @media (max-width: $tablet-breakpoint)
+            .name
+                text-align: center
+                padding-right: 30px
+            .title
+                text-align: center
+                padding-bottom: 20px
+                padding-right: 30px
+
+        .share
+            margin: 5px 0 0
+            @media (max-width: $tablet-breakpoint)
+                margin-bottom: 10px
+
+        .share-buttons
+
+            @media (max-width: $tablet-breakpoint)
+                padding-left: 15px
+
+            a
+                margin: 0 10px 10px 0
+                display: inline-block
+
+            > div
+                display: flex
+
+        .user-card .picture
+            padding: 5px 30px 10px 0
+            max-width: 200px
+
+    figure
+        padding: 30px 0
+
+    blockquote
+        font-size: 1.05em
+        font-style: italic
+
+        &.block
+            border-left: none
+            background-color: rgba(200, 200, 200, 0.3)
+
+        cite
+            text-align: right
+            font-style: normal
+            display: block
+
+    .related
+        margin: 30px 15px
+
+        > *
+            padding: 5px 15px
+            font-weight: bold
+            border-radius: 1px
+            color: white
+            margin: 15px 0
+            display: inline-block
+
+        .related-header
+            display: inline-block
+            background-color: $red
+
+        a.tag
+            background-color: #757E7A
+            margin: 5px
+            color: white
+
+        a.tag:visited
+            color: white
+
+        a.tag:hover, a.tag:focus
+            color: $red
+
+    > cite.writer
+        display: block
+        font-style: normal
+        margin: 30px 0
+        padding: 15px 15px 10px
+        border-top: 1px solid black
+        border-bottom: 1px solid black
+
+    .related
+        .name
+            font-weight: bold
+            font-size: 1.3em
+            padding-top: 15px
+
+#disqus_thread
+    margin: 0 15px
+
+.tag:hover
+    text-decoration: none
+
+i.fa
+    font-size: 30px
+    line-height: 40px
+    text-align: center
+    color: white
+    background-color: #474749
+    width: 40px
+    height: 40px
+    border-radius: 4px
+
+    &:hover
+        color: $red
+
+i.fa-google-plus
+    font-size: 28px
+
+#tag-list
+    p
+        display: inline
+    strong
+        color: $red
+    li
+        margin: 30px 0
+
+figure img
+    width: 100%
+    height: auto
+
+footer
+    color: white
+    font-size: 0.9em
+    padding-top: 50px
+
+    @media (max-width: $tablet-breakpoint)
+        padding-top: 60px
+
+    #footer-button
+        display: flex
+        flex-direction: column
+        justify-content: center
+
+        figure
+            @media (min-width: $mobile-breakpoint)
+                display: flex
+                flex-direction: column
+                justify-content: center
+                flex: 1 1 200px
+                margin-top: 25px
+
+            @media (max-width: $mobile-breakpoint)
+                display: block
+                margin: 0
+                flex: 1 1 140px
+
+    p
+        margin: 20px 0
+
+    a
+        color: white
+        &:visited
+            color: white
+        &:hover
+            color: $yellow
+
+    .header
+        margin: 0 0 20px
+
+    .links
+        > *
+            display: inline-block
+            margin-top: 15px
+            margin-bottom: 25px
+            margin-right: 30px
+            vertical-align: top
+            > *
+                margin-top: 5px
+
+    .copyright
+        font-size: 0.7em
+        margin-bottom: 5px
+        padding-left: 15px

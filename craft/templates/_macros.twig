@@ -1,0 +1,179 @@
+{% macro showTag(tag) %}
+    <a class="tag" href="{{ siteUrl }}tags/{{ tag|url_encode }}"><span>{{ tag|lower }}</span></a>
+{% endmacro %}
+
+{% macro formatDateTime(dateTime) %}
+    {{ dateTime|date("F d, Y g:ia T") }}
+{% endmacro %}
+
+
+{% macro image(imagefield) %}
+    {% set image = imagefield.first() %}
+
+    <figure class="headerImage">
+        <img src="{{ image.url }}" width="100%;" alt="{{ image.title }}" title="{{ image.title }}">
+        {% if image.caption %}<figcaption class="caption">{{ image.caption }}</figcaption>{% endif %}
+    </figure>
+{% endmacro %}
+
+
+{% macro smallImage(imagefield) %}
+    {% set image = imagefield.first() %}
+    <img src="{{ image.url }}" width="100%;" alt="{{ image.title }}" title="{{ image.title }}">
+{% endmacro %}
+
+
+{% macro basicImage(imagefield) %}
+    {% set image = imagefield.first() %}
+    <img src="{{ image.url }}" alt="{{ image.title }}" title="{{ image.title }}">
+{% endmacro %}
+
+
+{% macro authorImage(author, size=100) %}
+    <img width="100%;" class='profilePicture' src="{{ author.photoUrl(size) }}" alt="{{ author.name }}'s profile picture" title="{{ author.name }}'s profile picture">
+{% endmacro %}
+
+
+{% macro contentWarnings(entry) %}
+    {% for tag in entry.contentWarnings %}
+        <a href='/content-warnings#CW-{{ tag.title|trim }}' title='{{ tag }} // {{ tag.info|striptags }}'><span class='content-warning-shortname'>{{ tag.short }}</span></a>
+    {% endfor %}
+{% endmacro %}
+
+
+{% macro articleList(entries, largerLead, width=6) %}
+    {% for entry in entries %}
+        {% if loop.first and largerLead %}
+            {{ _self.articleItem(entry, true) }}
+        {% else %}
+            {{ _self.articleItem(entry) }}
+        {% endif %}
+    {% endfor %}
+{% endmacro %}
+
+
+{% macro articleItem(entry, single=false, width=6) %}
+    {% set image = entry.headerImage.first() %}
+    <li class="{% if single %}col-sm-12{% else %}col-md-{{ width }} col-sm-12{% endif %}">
+        <div class="article-preview-container {% if single %}single{% else %}dual{% endif %}">
+            <a style="background-image: url('{{ image.url }}')" class="header-image" href="{{ entry.url }}"></a>
+            <div class="slantbox">
+                <div class="reference-point"><div class="slant-border border-top"></div></div>
+                <div class="content">
+                    <a href="{{ entry.url }}"><h2 style="display: inline">{{ entry.title }}</h2></a>
+                    {{ _self.contentWarnings(entry) }}
+                    <div><a class="subtext" href="/authors/{{ entry.writer.first().username|url_encode }}">by {{ entry.writer.first().name }}</a></div>
+                    <div class="description hide-micro">{{ entry.description }}</div>
+                </div>
+                <div class="reference-point"><div class="slant-border border-bottom"></div></div>
+            </div>
+        </div>
+    </li>
+{% endmacro %}
+
+
+{% macro outputMatrix(matrixfield) %}
+    {% set grid_active = false %}
+    {% set grid_first_element = false %}
+
+    <div class="container-fluid">
+    <div class="row">
+
+    {% for block in matrixfield %}
+        {% set block_id = "block_id_" ~ block.id %}
+
+        {% if block.type == "mainSubhead" %}
+
+            <{{ block.mainSubheadType.value }} class='{{ block.style.value }}'>
+                {{ block.mainSubheadContent }}
+            </{{ block.mainSubheadType.value }}>
+
+        {% elseif block.type == "mainBody" %}
+
+            {% if block.classes %}<span class="{{ block.classes }}">{% endif %}
+                {{ block.contents }}
+            {% if block.classes %}</span>{% endif %}
+
+        {% elseif block.type == "template" %}
+            <div id="{{ block.templateName.value }}" class="{{ block.classes }}">
+                {% include "partials/includes/_" ~ block.templateName.value %}
+            </div>
+
+        {% elseif block.type == "mainImage" %}
+
+            {% set image = block.imageFile.first() %}
+
+            {% set figureWidth = null %}
+            {% set transformtype = null %}
+            {% if block.imageWidth == 'imageQuarter' %}
+                {% set transformtype = 'imageQuarter' %}
+                {% set figureWidth = '25%' %}
+            {% elseif block.imageWidth == 'imageThird' %}
+                {% set transformtype = 'imageThird' %}
+                {% set figureWidth = '33%' %}
+            {% elseif block.imageWidth == 'imageHalf' %}
+                {% set transformtype = 'imageHalf' %}
+                {% set figureWidth = '50%' %}
+            {% elseif block.imageWidth == 'imageFull' %}
+                {% set transformtype = 'imageFull' %}
+                {% set figureWidth = '100%' %}
+            {% elseif block.imageWidth.value starts with 'col' %}
+                {% if not grid_active %}
+                    {% set grid_first_element = true %}
+                {% endif %}
+                {% set grid_active = true %}
+            {% endif %}
+
+            {% if image %}
+            {# BOOTSTRAP GRIDS #}
+                {# GRID END #}
+                    {% if (grid_active) and (not block.imageWidth.value starts with 'col') %}
+                        {% set grid_active = false %}
+                        </div></div>
+                {# GRID START #}
+                    {% elseif grid_first_element %}
+                        <div class="container-fluid col-lg-12">
+                        <div class="row">
+                        {% set grid_first_element = false %}
+                    {% endif %}
+            {# /BOOTSTRAP GRIDS #}
+            {# FIGURE #}
+                <figure class="{{ block.imagePosition }} {{ block.imageWidth }}"
+                    style="
+                        float: {{ block.imagePosition }};
+                        {% if figureWidth %}width: {{ figureWidth }};{% endif %}
+                    "
+                >
+                {# ANCOR #}
+                    {% if block.href %}<a href="{{ block.href }}" target="{% if block.blank %}_blank{% endif %}">{% endif %}
+                        <img src="{{ image.getUrl(transformtype) }}" alt="{{ image.title }}"/>
+                    {% if block.href %}</a>{% endif %}
+                {# /ANCOR #}
+                {# IMAGE #}
+                    {% if block.imageCaption != '' %}
+                        <caption><div class="caption">{{ block.imageCaption }}</div></caption>
+                    {% endif %}
+                {# /IMAGE #}
+                </figure>
+            {# /FIGURE #}
+            {% endif %}
+
+        {% elseif block.type == "blockQuote" %}
+            <blockquote class="block">
+                {{ block.contents }}
+                <cite>{{ block.source }}</cite>
+            </blockquote>
+
+        {% elseif block.type == "inlineQuote" %}
+            <blockquote class="inline">
+                {{ block.contents }}
+                <cite>{{ block.source }}</cite>
+            </blockquote>
+        {% endif %}
+
+    {% endfor %}
+
+    </div>
+    </div>
+
+{% endmacro %}

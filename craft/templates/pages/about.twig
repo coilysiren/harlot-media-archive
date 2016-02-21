@@ -1,0 +1,26 @@
+{% extends "_base" %}
+{% set entry = craft.entries.section('about').first() %}
+{% set users_fulltime = craft.users.relatedTo(craft.categories.slug('fulltime').first()) %}
+{% set users_parttime = craft.users.relatedTo(craft.categories.slug('parttime-contract').first()) %}
+{% set users_writers = craft.users.relatedTo(craft.categories.slug('writer').first()) %}
+{% set staff_lists = [users_fulltime, users_parttime, users_writers] %}
+
+{% block main_content %}
+    <section>
+        <h2 class="headingUnderline">About</h1>
+        {{ macros.outputMatrix(entry.articleMain) }}
+    </section>
+
+    <section class="contributor-list container-fluid">
+        <h2>Contributors</h2>
+        <ul class="row" style="display: flex; align-items: stretch; flex-wrap: wrap;">
+            {% for users in staff_lists %}
+                {% for user in users %}
+                    <li class="col-xs-3">
+                        {% include 'partials/_user_card' %}
+                    </li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

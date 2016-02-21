@@ -1,0 +1,18 @@
+{% set users_parttime = craft.users.relatedTo(craft.categories.slug('parttime-contract').first()).order('RAND()').limit(1) %}
+{% set users_writers = craft.users.relatedTo(craft.categories.slug('writer').first()).order('RAND()').limit(3) %}
+{% set user_type = [users_parttime, users_writers] %}
+
+<section>
+    <header class='arc'>Contributors</header>
+    <div class="content container-fluid contributor-list">
+        <ul class="row" style="display: flex; align-items: stretch; flex-wrap: wrap;">
+            {% for users in user_type %}
+                {% for user in users %}
+                    <li class="col-xs-6">
+                        {% include 'partials/_user_card' %}
+                    </li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+</section>
