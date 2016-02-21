@@ -8,7 +8,9 @@ php + addons
 
 get craft
 
-    #
+    curl -L http://craftcms.com/latest.tar.gz?accept_license=yes -o craft_install.tar.gz
+    sudo tar -xvzf craft_install.tar.gz
+    rm -f craft_install.tar.gz
 
 sync source code
 
