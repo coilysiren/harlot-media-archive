@@ -7,6 +7,19 @@
  * You can see a list of the default settings in craft/app/etc/config/defaults/general.php
  */
 
-return array(
+include '.env.php';
 
+return array(
+    '*' => array(
+        'devMode' => $devMode,
+        'omitScriptNameInUrls' => true,
+        'defaultSearchTermOptions' => array(
+            'subLeft' => true,
+            'subRight' => true,
+        ),
+    ),
+    'harlot.media' => array(
+    ),
+    'localhost' => array(
+    ),
 );
