@@ -335,24 +335,37 @@ nav
         z-index: 100
 
         ul
+            display: flex
+            flex-direction: column
+            height: 100%
+            justify-content: space-around
+
             @media (max-width: $mobile-breakpoint)
                 padding: 5px
             @media (min-width: $mobile-breakpoint)
                 padding: 5px 20px
 
         li
+            flex: 1
+
             &:not(:last-child)
                 border-bottom: 1px $red solid
 
             a
                 width: 100%
-                display: block
-                padding: 7px 2px
+                height: 100%
                 margin: 0
                 min-width: 300px
                 color: $brown
+                display: flex
+                flex-direction: column
+                justify-content: center
+
+                @media (min-width: $mobile-breakpoint)
+                    padding: 15px 0
 
                 @media (max-width: $mobile-breakpoint)
+                    padding: 20px 10px
                     text-align: left
 
                 &:hover, &:focus
@@ -363,15 +376,17 @@ nav
     &.open #nav-menu
         display: inherit
         right: 100px
-        height: auto
         width: auto
 
+        @media (min-width: $mobile-breakpoint)
+            height: 80%
+
         @media (max-width: $mobile-breakpoint)
+            height: 100%
             left: -30px
             right: auto
             width: 110%
             padding: 40px 15% 0 100px
-            min-height: 300px
 
     .nav-button
         display: block
@@ -476,12 +491,12 @@ header.title
 
 #sidebar-column
     @media (min-width: $mobile-breakpoint)
-        margin-top: 260px
+        margin-top: 200px
         &.inline-aside
             margin-top: 50%
 
     @media (max-width: $desktop-breakpoint)
-        margin-top: 120px
+        margin-top: 60px
 
     @media (max-width: $mobile-breakpoint)
         padding-right: 0
@@ -503,20 +518,23 @@ aside
         margin-top: 15px
 
     section
-        padding-top: 60px
-        padding-bottom: 25px
+        padding-top: 10px
+        padding-bottom: 10px
         margin-right: -15px
 
 .headingUnderline
     border-bottom: 1px solid $red
 
-#featured
+#sidebar-featured
     li
         display: flex
         padding: 0 0 25px
 
         a
             height: 100%
+
+    li:last-child
+        padding-bottom: 0
 
     .headerImage
         max-width: 25%
@@ -631,11 +649,11 @@ main.container-fluid
         &:hover, &:focus
             color: #deab17
 
-figure.support-button-upper
-    margin: 15px 60px 0 0
+#support-button-upper
+    margin: 15px 60px 25px 0
 
     @media (max-width: $mobile-breakpoint)
-        margin: 0
+        margin: 0 0 45px 0
 
 #infographic
     font-size: 16px
@@ -665,9 +683,9 @@ label
     width: 95%
     display: inline-block
 
-.subscribe
+#sidebar-subscribe
     header
-        margin-top: 50px
+        padding-left: 10px
         line-height: 0.8em
 
         @media (max-width: $mobile-breakpoint)
@@ -788,8 +806,6 @@ input
             height: 550px
 
         @media (max-width: $mobile-breakpoint)
-            margin-bottom: 120px
-
             &:last-child
                 margin-bottom: 0
 

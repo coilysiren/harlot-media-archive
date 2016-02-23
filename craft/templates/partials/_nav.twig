@@ -21,10 +21,14 @@
 
       {% include 'partials/includes/_social_links.twig' %}
 
+      <a class="nav-button" href="/rss">
+        <i class="fa fa-rss"></i>
+      </a>
+
       <div id="nav-menu">
         <ul>
           {% for entry in entries %}
-            <li><a href='{{ entry.url }}'>{{ entry.title }}</a></li>
+            <li><a href='{{ entry.url }}'><span>{{ entry.title }}</span></a></li>
           {% endfor %}
         </ul>
       </div>

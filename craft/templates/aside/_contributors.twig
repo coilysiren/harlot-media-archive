@@ -2,7 +2,7 @@
 {% set users_writers = craft.users.relatedTo(craft.categories.slug('writer').first()).order('RAND()').limit(3) %}
 {% set user_type = [users_parttime, users_writers] %}
 
-<section>
+<section id="sidebar-contributors">
     <header class='arc'>Contributors</header>
     <div class="content container-fluid contributor-list">
         <ul class="row" style="display: flex; align-items: stretch; flex-wrap: wrap;">
