@@ -19,7 +19,9 @@ return array(
         ),
     ),
     'harlot.media' => array(
+        'siteUrl' => 'http://harlot.media',
     ),
     'localhost' => array(
+        'siteUrl' => 'http://localhost'
     ),
 );
