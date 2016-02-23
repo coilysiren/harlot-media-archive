@@ -8,23 +8,7 @@ function resize_article_borders() {
     })
 }
 
-function fit_size() {
-    if (($("html")[0].offsetWidth < $("html")[0].scrollWidth) && (Modernizr.mq('(min-width: 767px)'))) {
-        $(".body-flex").css("display", "inline-block")
-        $(".body-flex").css("padding-left", "15px")
-        $(".body-flex").css("padding-right", "15px")
-    }
-    else {
-        $(".body-flex").css("display", "block")
-        $(".body-flex").css("padding-left", "5px")
-        $(".body-flex").css("padding-right", "5px")
-    }
-}
-
 $(document).ready(function() {
     resize_article_borders()
     $(window).resize(resize_article_borders)
-
-    fit_size()
-    $(window).resize(fit_size)
 })
