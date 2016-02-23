@@ -8,7 +8,5 @@ function resize_article_borders() {
     })
 }
 
-$(document).ready(function() {
-    resize_article_borders()
-    $(window).resize(resize_article_borders)
-})
+resize_article_borders()
+$(window).resize(resize_article_borders)
