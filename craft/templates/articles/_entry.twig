@@ -24,13 +24,18 @@
 
 				<div class="share-buttons">
 					<div class="share">SHARE</div>
-					<div>
-						<a href="https://twitter.com/intent/tweet?text={{ title|url_encode }}&amp;url={{ url(craft.request.path)|url_encode }}&amp;via=harlotmedia" title="Share on Twitter"><i class='fa fa-twitter'></i></a>
-						<a href="https://www.tumblr.com/share/link?posttype=link&amp;title={{ title }}&amp;content={{ url(craft.request.path)|url_encode }}&amp;caption={{ description|url_encode }}&amp;canonicalUrl={{ url(craft.request.path)|url_encode }}" title="Share on Tumblr"><i class='fa fa-tumblr'></i></a>
+					<div class="share-row">
+						<div class="share-row-inner">
+							<a href="https://twitter.com/intent/tweet?text={{ title|url_encode }}&amp;url={{ url(craft.request.path)|url_encode }}&amp;via=harlotmedia" title="Share on Twitter"><i class='fa fa-twitter'></i></a>
+							<a href="https://www.tumblr.com/share/link?posttype=link&amp;title={{ title }}&amp;content={{ url(craft.request.path)|url_encode }}&amp;caption={{ description|url_encode }}&amp;canonicalUrl={{ url(craft.request.path)|url_encode }}" title="Share on Tumblr"><i class='fa fa-tumblr'></i></a>
+						</div>
 					</div>
-					<div>
-						<a href="#" onclick="FB.ui({method: 'share',href: '{{ entry.url }}',}, function(response){});"><i class='fa fa-facebook'></i></a>
-						<a href="#" onclick="gPlus('{{ entry.url }}');" ><i class='fa fa-google-plus'></i></a>
+					<br />
+					<div class="share-row">
+						<div class="share-row-inner">
+							<a href="#" onclick="FB.ui({method: 'share',href: '{{ entry.url }}',}, function(response){});"><i class='fa fa-facebook'></i></a>
+							<a href="#" onclick="gPlus('{{ entry.url }}');" ><i class='fa fa-google-plus'></i></a>
+						</div>
 					</div>
 				</div>
 

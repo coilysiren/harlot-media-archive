@@ -937,8 +937,9 @@ article
 
     .article-info
         float: left
-        margin: 40px 20px 40px 0
-        text-align: left
+        margin: 35px 0 40px 0
+        padding-right: 20px
+        text-align: center
         display: flex
         justify-content: space-around
 
@@ -946,21 +947,15 @@ article
             width: 100%
             margin-top: 0
             margin-bottom: 0
+            padding-bottom: 20px
 
         @media (min-width: $tablet-breakpoint)
             flex-direction: column
 
-        @media (max-width: $tablet-breakpoint)
-            .name
-                text-align: center
-                padding-right: 30px
-            .title
-                text-align: center
-                padding-bottom: 20px
-                padding-right: 30px
-
         .share
-            margin: 5px 0 0
+            @media (min-width: $tablet-breakpoint)
+                margin: 15px 0 0
+
             @media (max-width: $tablet-breakpoint)
                 margin-bottom: 10px
 
@@ -970,14 +965,20 @@ article
                 padding-left: 15px
 
             a
-                margin: 0 10px 10px 0
+                margin: 0 0 10px 0
                 display: inline-block
 
-            > div
-                display: flex
+            a:first-child
+                margin-right: 10px
+
+        .share-row
+            display: inline-block
+
+        .share-row-inner
+            display: flex
 
         .user-card .picture
-            padding: 5px 30px 10px 0
+            padding: 0 0 10px 0
             max-width: 200px
 
     figure
