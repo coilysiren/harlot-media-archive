@@ -26,7 +26,7 @@
     <link rel="canonical" href="{{ entry.url }}" />
     {% if entry.headerImage|length > 0 %}
         {% set writer = entry.writer.first() %}
-        <meta name="author" property="author" content="{{ writer.name }}" />
+        <meta name="author" content="{{ writer.name }}" />
         <meta name="og:image" property="og:image" content="{{ entry.headerImage.first().url }}" />
         <meta name="twitter:image" content="{{ entry.headerImage.first().url }}" />
         <meta name="article:published_time" property="article:published_time" content="{{ entry.postDate.iso8601 }}" />
@@ -37,7 +37,7 @@
         {# author attribution #}
             {% for link in writer.links %}
                 {% if link.icon.class == 'fa-facebook-square' %}
-                    <meta name="article:author" property="article:author" content="{{ link.siteUrl }}" />
+                    <meta property="article:author" content="{{ link.siteUrl }}" />
                 {% endif %}
                 {% if link.icon.class == 'fa-twitter-square' %}
                     <meta name="twitter:creator" property="twitter:creator" content="@{{ link.siteUrl|split('/')[3] }}" />
