@@ -449,23 +449,20 @@ ul
     border: 1px solid rgba(200, 200, 200, 0.8)
 
 #header-column
-    margin-bottom: 40px
+    @media (max-width: $mobile-breakpoint)
+        margin-bottom: $mobile-verticle-padding/2
 
-    @media (max-width: $desktop-breakpoint)
-        margin-bottom: 80px
+    @media (min-width: $mobile-breakpoint) and (max-width: $tablet-breakpoint)
+        margin-bottom: 10px
+
+    @media (min-width: $tablet-breakpoint)
+        margin-bottom: 10%
 
 header.title
     font-size: 55px
     line-height: 45px
     margin-top: 40px
     width: 70%
-    padding-bottom: 60px
-
-    @media (max-width: $mobile-breakpoint)
-        padding-bottom: $mobile-verticle-padding/2
-
-    @media (min-width: $mobile-breakpoint) and (max-width: $desktop-breakpoint)
-        padding-bottom: 100px
 
     a
         color: $gray
@@ -491,8 +488,11 @@ header.title
         &.inline-aside
             margin-top: 50%
 
-    @media (max-width: $desktop-breakpoint)
-        margin-top: 60px
+    @media (min-width: $mobile-breakpoint) and (max-width: $tablet-breakpoint)
+        margin-top: 160px
+
+    @media (min-width: $tablet-breakpoint)
+        margin-top: 15%
 
     @media (max-width: $mobile-breakpoint)
         padding-right: 0
@@ -798,7 +798,7 @@ input
     li
         margin-bottom: 60px
 
-        @media (min-width: $tablet-breakpoint) and (max-width: $desktop-breakpoint)
+        @media (min-width: $tablet-breakpoint)
             height: 550px
 
         @media (min-width: $desktop-breakpoint)
