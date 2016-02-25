@@ -3,15 +3,18 @@
 
 <!DOCTYPE html>
 <html>
+<head>
+    <link rel="stylesheet" href="/_assets/css/assets.css" />
+</head>
 <body>
-<table>
-    <tr>
+<table class="table table-striped">
+    <thead>
         <th>Report</th>
         <th>Date / Time</th>
         <th>Platform</th>
         <th>Usernames Involved</th>
         <th>Screenshots</th>
-    </tr>
+    </thead>
     {% for entry in entries %}
         <tr>
             <td>{{ entry.title }}</td>
