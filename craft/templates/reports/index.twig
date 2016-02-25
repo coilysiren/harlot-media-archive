@@ -1,0 +1,26 @@
+{% requireLogin %}
+{% set entries = craft.entries.section('reports').limit(null) %}
+
+<!DOCTYPE html>
+<html>
+<body>
+<table>
+    <tr>
+        <th>Report</th>
+        <th>Date / Time</th>
+        <th>Platform</th>
+        <th>Usernames Involved</th>
+        <th>Screenshots</th>
+    </tr>
+    {% for entry in entries %}
+        <tr>
+            <td>{{ entry.title }}</td>
+            <td>{{ entry.dateTime }}</td>
+            <td>{{ entry.platform }}</td>
+            <td>{{ entry.usernamesInvolved }}</td>
+            <td>{% for image in entry.screenshots %}<img src="{{ image.url }}" />{% endfor %}</td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
