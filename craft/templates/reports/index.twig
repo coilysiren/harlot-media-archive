@@ -1,4 +1,5 @@
 {% requireLogin %}
+{% import "_macros" as macros %}
 {% set entries = craft.entries.section('reports').limit(null) %}
 
 <!DOCTYPE html>
@@ -10,17 +11,21 @@
 <table class="table table-striped">
     <thead>
         <th>Report</th>
+        <th>Reporter</th>
         <th>Date / Time</th>
         <th>Platform</th>
         <th>Usernames Involved</th>
+        <th>Comments</th>
         <th>Screenshots</th>
     </thead>
     {% for entry in entries %}
         <tr>
             <td>{{ entry.title }}</td>
-            <td>{{ entry.dateTime }}</td>
+            <td>{{ entry.author.username }}</td>
+            <td>{{ macros.formatDateTime(entry.dateTime) }}</td>
             <td>{{ entry.platform }}</td>
             <td>{{ entry.usernamesInvolved }}</td>
+            <td>{{ entry.comments }}</td>
             <td>{% for image in entry.screenshots %}<img src="{{ image.url }}" />{% endfor %}</td>
         </tr>
     {% endfor %}
