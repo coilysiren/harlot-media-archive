@@ -14,6 +14,7 @@
         <th>Reporter</th>
         <th>Date / Time</th>
         <th>Platform</th>
+        <th>Type</th>
         <th>Usernames Involved</th>
         <th>Comments</th>
         <th>Screenshots</th>
@@ -24,6 +25,7 @@
             <td>{{ entry.author.username }}</td>
             <td>{{ macros.formatDateTime(entry.dateTime) }}</td>
             <td>{{ entry.platform }}</td>
+            <td>{% for option in entry.actionType %}{{ option }}{% if not loop.last %}, {% endif %}{% endfor %}</td>
             <td>{{ entry.usernamesInvolved }}</td>
             <td>{{ entry.comments }}</td>
             <td>{% for image in entry.screenshots %}<img src="{{ image.url }}" />{% endfor %}</td>
