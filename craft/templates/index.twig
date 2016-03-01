@@ -1,7 +1,7 @@
 {% extends "_base" %}
 {% set entries =  homepageArticles.articles %}
-{% set _homePageTags = homepageTags.tagList.find() %}
-{% set _activeTags = craft.tags.handle('subjects').relatedTo(craft.entries.section('articles')).find() %}
+{% set _homePageTags = homepageTags.tagList.limit(null).find() %}
+{% set _activeTags = craft.tags.handle('subjects').relatedTo(craft.entries.section('articles')).limit(null).find() %}
 {% set tags = _homePageTags|intersect(_activeTags) %}
 
 {% block main_content %}
