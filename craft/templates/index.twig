@@ -7,8 +7,9 @@
     <section>
         <ul class="articleList row">
             {{ macros.articleItem(entries[0], true) }}
-            {% if entries|length >= 2 %}{{ macros.articleItem(entries[1]) }}{% endif %}
-            {% if entries|length >= 3 %}{{ macros.articleItem(entries[2]) }}{% endif %}
+            {% for entry in entries[1:6] %}
+                {{ macros.articleItem(entry) }}
+            {% endfor %}
         </ul>
     </section>
 
@@ -23,14 +24,12 @@
     </section>
     {% endif %}
 
-    {% if entries|length >= 4 %}
     <section>
         <ul class="articleList row">
-            {% for entry in entries[3:] %}
+            {% for entry in entries[7:] %}
                 {{ macros.articleItem(entry) }}
             {% endfor %}
         </ul>
     </section>
-    {% endif %}
 
 {% endblock %}
