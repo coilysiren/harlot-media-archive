@@ -54,21 +54,23 @@
 
 {% macro articleItem(entry, single=false, width=6) %}
     {% set image = entry.headerImage.first() %}
-    <li class="{% if single %}col-sm-12{% else %}col-md-{{ width }} col-sm-12{% endif %}">
-        <div class="article-preview-container {% if single %}single{% else %}dual{% endif %}">
-            <a style="background-image: url('{{ image.url }}')" class="header-image" href="{{ entry.url }}"></a>
-            <div class="slantbox">
-                <div class="reference-point"><div class="slant-border border-top"></div></div>
-                <div class="content">
-                    <a href="{{ entry.url }}"><h2 style="display: inline">{{ entry.title }}</h2></a>
-                    {{ _self.contentWarnings(entry) }}
-                    <div><a class="subtext" href="/authors/{{ entry.writer.first().username|url_encode }}">by {{ entry.writer.first().name }}</a></div>
-                    <div class="description hide-micro">{{ entry.description }}</div>
+    {% if entry.writer.first().name is defined %}
+        <li class="{% if single %}col-sm-12{% else %}col-md-{{ width }} col-sm-12{% endif %}">
+            <div class="article-preview-container {% if single %}single{% else %}dual{% endif %}">
+                <a style="background-image: url('{{ image.url }}')" class="header-image" href="{{ entry.url }}"></a>
+                <div class="slantbox">
+                    <div class="reference-point"><div class="slant-border border-top"></div></div>
+                    <div class="content">
+                        <a href="{{ entry.url }}"><h2 style="display: inline">{{ entry.title }}</h2></a>
+                        {{ _self.contentWarnings(entry) }}
+                        <div><a class="subtext" href="/authors/{{ entry.writer.first().username|url_encode }}">by {{ entry.writer.first().name }}</a></div>
+                        <div class="description hide-micro">{{ entry.description }}</div>
+                    </div>
+                    <div class="reference-point"><div class="slant-border border-bottom"></div></div>
                 </div>
-                <div class="reference-point"><div class="slant-border border-bottom"></div></div>
             </div>
-        </div>
-    </li>
+        </li>
+    {% endif %}
 {% endmacro %}
 
 
