@@ -19,5 +19,5 @@
  */
 
 return array(
-
+    'category/(?P<category>\w*)' => 'category/_category',
 );

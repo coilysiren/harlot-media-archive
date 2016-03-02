@@ -10,6 +10,10 @@
 	<article>
 		<div class="container-fluid">
 
+			{% if entry.articleSection.first().title %}
+				<div id="article-category"><a href='{{ entry.articleSection.first().url }}'>{{ entry.articleSection.first().title }}</a><hr /></div>
+			{% endif %}
+
 			<header>
 				<h1>{{ entry.title }}</h1>
 				{{ macros.contentWarnings(entry) }}

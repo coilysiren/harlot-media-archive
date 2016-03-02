@@ -1,0 +1,14 @@
+{% extends "_base" %}
+{% set category = craft.categories.slug(category).first() %}
+{% set entries = craft.entries.relatedTo(category).limit(null).order('dateCreated') %}
+
+{% block main_content %}
+    {% if entries | length %}
+        <section class="tagsPage">
+            <h2 class="headingUnderline">{{ category.title }}</h2>
+            <ul class="articleList row">
+                {{ macros.articleList(entries) }}
+            </ul>
+        </section>
+    {% endif %}
+{% endblock %}
