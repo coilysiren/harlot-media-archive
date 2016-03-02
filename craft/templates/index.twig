@@ -1,5 +1,5 @@
 {% extends "_base" %}
-{% set entries =  homepageArticles.articles %}
+{% set entries =  homepageArticles.articles.limit(null).find() %}
 {% set _homePageTags = homepageTags.tagList.limit(null).find() %}
 {% set _activeTags = craft.tags.handle('subjects').relatedTo(craft.entries.section('articles')).limit(null).find() %}
 {% set tags = _homePageTags|intersect(_activeTags) %}
@@ -16,7 +16,7 @@
     </section>
 
     {% if tags|length > 0 %}
-    <section class='articlesByTag'>
+    <section class='homepage-section'>
         <div class='heading'><span><strong>MORE TOPICS</strong></span></div>
         <ul class='content'>
         {% for tag in tags %}
@@ -32,6 +32,10 @@
                 {{ macros.articleItem(entry) }}
             {% endfor %}
         </ul>
+    </section>
+
+    <section class='homepage-section'>
+        <div class='heading btn btn-default'><a href="/articles/more"><strong>MORE ARTICLES</strong></a></div>
     </section>
 
 {% endblock %}

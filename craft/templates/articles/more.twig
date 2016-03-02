@@ -1,0 +1,15 @@
+{% extends "_base" %}
+{% set _hompageArticles =  homepageArticles.articles.limit(null).find() %}
+{% set _allArticles = craft.entries.handle('articles').limit(null).find() %}
+{% set entries = _allArticles|without(_hompageArticles) %}
+
+{% block main_content %}
+
+    <section>
+        <ul class="articleList row">
+            {% for entry in entries %}
+                {{ macros.articleItem(entry) }}
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}
