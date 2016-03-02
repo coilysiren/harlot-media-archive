@@ -1,10 +1,10 @@
 {% extends "_base" %}
-{% set _hompageArticles =  homepageArticles.articles.limit(null).find() %}
-{% set _allArticles = craft.entries.handle('articles').limit(null).find() %}
-{% set entries = _allArticles|without(_hompageArticles) %}
+{% set _hompageArticles =  homepageArticles.articles.limit(null).ids() %}
+{% set _allArticles = craft.entries.handle('articles').limit(null).ids() %}
+{% set _entries = _allArticles|without(_hompageArticles) %}
+{% set entries = craft.entries.id(_entries) %}
 
 {% block main_content %}
-
     <section>
         <ul class="articleList row">
             {% for entry in entries %}
