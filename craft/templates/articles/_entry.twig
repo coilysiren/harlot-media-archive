@@ -4,14 +4,15 @@
 {% set writer = entry.writer.first %}
 {% set author = entry.writer.first %}
 {% set user = entry.writer.first %}
+{% set articleSection = entry.articleSection.first() %}
 
 {% block main_content %}
 
 	<article>
 		<div class="container-fluid">
 
-			{% if entry.articleSection.first().title %}
-				<div id="article-category"><a href='{{ entry.articleSection.first().url }}'>{{ entry.articleSection.first().title }}</a><hr /></div>
+			{% if articleSection %}
+				<div id="article-category"><a href='{{ articleSection.url }}'>{{ articleSection.title }}</a><hr /></div>
 			{% endif %}
 
 			<header>
