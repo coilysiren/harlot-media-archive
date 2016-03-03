@@ -3,7 +3,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
     <channel>
-        <title>Harlot</title>
+        <title>Harlot Media</title>
         <link>http://harlot.media/</link>
         <description>The Dirtiest Well-known Secret</description>
         <language>en-us</language>
@@ -11,7 +11,7 @@
         <lastBuildDate>{{ now.rss }}</lastBuildDate>
         <image>
             <url>{{ siteUrl }}uploads/assets/favicon.png</url>
-            <title>Harlot Media Icon</title>
+            <title>Harlot Media</title>
             <link>http://harlot.media/</link>
         </image>
         {% for item in rss %}
@@ -26,6 +26,5 @@
                 </item>
             {% endif %}
         {% endfor %}
-    <atom:link href="{{ siteUrl }}rss" rel="self" type="application/rss+xml" />
     </channel>
 </rss>
