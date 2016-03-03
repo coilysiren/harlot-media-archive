@@ -19,5 +19,13 @@
  */
 
 return array(
-    'category/(?P<category>\w*)' => 'category/_category',
+    'search' => 'pages/_search',
+    'articles/more' => 'pages/_more_articles',
+    'category/(?P<category>\w*)' => 'pages/_category',
+    'tagged/(?P<tags>\w*)' => 'pages/_tag',
+    'authors/(?P<author>\w*)' => 'pages/_user',
+    'people/(?P<author>\w*)' => 'pages/_user',
+    'articles/(?P<article_id>[0-9]*)' => 'pages/_article',
+    'articles/(?P<article_slug>[\w-]*)[\s\S]*' => 'pages/_article',
+    'articles/(?P<article_id>[0-9]*)[\s\S]*' => 'pages/_article',
 );
