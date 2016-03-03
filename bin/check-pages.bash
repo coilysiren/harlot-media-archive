@@ -12,6 +12,6 @@ xdg-open http://$1/donate_thank_you &&
 xdg-open http://$1/search &&
 xdg-open http://$1/rss &&
 xdg-open http://$1/authors/cyrin &&
-xdg-open http://$1/tagged/racism &&
+xdg-open http://$1/tags/racism &&
 xdg-open http://$1/articles/more &&
 xdg-open http://$1/articles/690/samus-is-trans-and-ronda-rousey-probably-shouldnt-play-her
