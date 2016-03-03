@@ -1,7 +1,7 @@
 {% header "Content-Type: application/xml" %}
 {% set rss = craft.entries.section('articles') %}
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
     <channel>
         <title>Harlot</title>
         <link>http://harlot.media/</link>
@@ -9,17 +9,23 @@
         <language>en-us</language>
         <pubDate>{{ now.rss }}</pubDate>
         <lastBuildDate>{{ now.rss }}</lastBuildDate>
+        <image>
+            <url>{{ siteUrl }}uploads/assets/favicon.png</url>
+            <title>Harlot Media Icon</title>
+            <link>http://harlot.media/</link>
+        </image>
         {% for item in rss %}
             {% if item.writer.first() %}
                 <item>
                     <title>{{ item.title }}</title>
                     <link>{{ item.url }}</link>
                     <pubDate>{{ item.postDate.rss }}</pubDate>
-                    <author>{{ item.writer.first().name }}</author>
+                    <dc:creator>{{ item.writer.first().name }}</dc:creator>
                     <guid>{{ item.url }}</guid>
                     <description>{{ item.description }}</description>
                 </item>
             {% endif %}
         {% endfor %}
+    <atom:link href="{{ siteUrl }}rss" rel="self" type="application/rss+xml" />
     </channel>
 </rss>
