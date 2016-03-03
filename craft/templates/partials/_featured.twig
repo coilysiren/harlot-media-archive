@@ -1,0 +1,20 @@
+{% set entries = featured.articles %}
+
+{% if entries|length > 0 %}
+<section id='sidebar-featured'>
+    <header class='arc'>Featured</header>
+    <div class="content">
+        <ul>
+            {% for entry in entries %}
+                <li>
+                    <div class="headerImage"><a href="{{ entry.url }}">{{ macros.smallImage(entry.headerImage) }}</div></a>
+                    <div class="articleText">
+                        <div><div class='heading'><a href="{{ entry.url }}">{{ entry.title }}</a>{{ macros.contentWarnings(entry) }}</div></div>
+                        <div class="author"><a href="/authors/{{ entry.writer.first().username|url_encode }}"><span class="subtext">by {{ entry.writer.first().name }}</span></a></div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{% endif %}
