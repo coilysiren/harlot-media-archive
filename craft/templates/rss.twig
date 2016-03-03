@@ -10,14 +10,16 @@
         <pubDate>{{ now.rss }}</pubDate>
         <lastBuildDate>{{ now.rss }}</lastBuildDate>
         {% for item in rss %}
-            <item>
-                <title>{{ item.title }}</title>
-                <link>{{ item.url }}</link>
-                <pubDate>{{ item.postDate.rss }}</pubDate>
-                <author>{{ item.writer.first.name }}</author>
-                <guid>{{ item.url }}</guid>
-                <description>{{ item.description }}</description>
-            </item>
+            {% if item.writer.first() %}
+                <item>
+                    <title>{{ item.title }}</title>
+                    <link>{{ item.url }}</link>
+                    <pubDate>{{ item.postDate.rss }}</pubDate>
+                    <author>{{ item.writer.first().name }}</author>
+                    <guid>{{ item.url }}</guid>
+                    <description>{{ item.description }}</description>
+                </item>
+            {% endif %}
         {% endfor %}
     </channel>
 </rss>
