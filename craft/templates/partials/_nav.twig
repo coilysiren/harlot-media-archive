@@ -1,4 +1,4 @@
-{% set entries = craft.entries.section(['about', 'contact', 'contentWarnings', 'commentPolicy']).order('order') %}
+{% set entries = craft.entries.section('pages').level(2) %}
 
 <div id='margo-nav'>
 
@@ -28,7 +28,13 @@
       <div id="nav-menu">
         <ul>
           {% for entry in entries %}
-            <li><a href='{{ entry.url }}'><span>{{ entry.title }}</span></a></li>
+            <li><a href='{{ entry.url }}'><span>
+              {% if entry.linkTitle|length > 0 %}
+                  {{ entry.linkTitle }}
+              {% else %}
+                  {{ entry.title }}
+              {% endif %}
+            </span></a></li>
           {% endfor %}
         </ul>
       </div>
