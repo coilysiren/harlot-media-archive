@@ -61,13 +61,13 @@
                 <div class="slantbox">
                     <div class="reference-point"><div class="slant-border border-top"></div></div>
                     <div class="content">
-                        <a href="{{ entry.url }}"><h2 style="display: inline">{{ entry.title }}</h2></a>
-                        {{ _self.contentWarnings(entry) }}
-                        <div><a class="subtext" href="/authors/{{ entry.writer.first().username|url_encode }}">by {{ entry.writer.first().name }}</a></div>
-                        <div class="description hide-micro">{{ entry.description }}</div>
+                        <div class="title"><a href="{{ entry.url }}"><h2 style="display: inline">{{ entry.title }}</h2></a>{{ _self.contentWarnings(entry) }}</div>
+                        <div class="author"><a class="subtext" href="/authors/{{ entry.writer.first().username|url_encode }}">by {{ entry.writer.first().name }}</a></div>
+                        <div class="description"><span>{{ entry.description }}</span><span class="description-end"></span></div>
                     </div>
                     <div class="reference-point"><div class="slant-border border-bottom"></div></div>
                 </div>
+                <div class="overflow-fade"></div>
             </div>
         </li>
     {% endif %}
