@@ -15,7 +15,7 @@ function hide_ellipses() {
         console.log($(this).find(".description").text())
         console.log(content_bottom)
         console.log(description_bottom)
-        if (description_bottom <= (content_bottom+1))
+        if (description_bottom < content_bottom)
             $(this).find(".overflow-fade").css("display", "none")
             console.log('overflowing')
     })
