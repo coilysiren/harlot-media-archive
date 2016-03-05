@@ -1,0 +1,10 @@
+{% set tags = craft.tags.group('warnings').relatedTo(craft.entries.section('articles')) %}
+
+<ul>
+    {% for tag in tags %}
+        <li>
+            <div id="CW-{{ tag.title|trim }}" class="content-warning-shortname">{{ tag.short }}</div>
+            <strong>{{ tag.title }}</strong><span> \\ </span>{{ tag.info }}
+        </li>
+    {% endfor %}
+</ul>

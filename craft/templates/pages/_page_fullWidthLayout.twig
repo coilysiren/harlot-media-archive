@@ -1,0 +1,14 @@
+{% extends "_base" %}
+
+{% block main_block %}
+    <div id="main-column" class='col-xs-12'>
+        <main class='container-fluid main-full'>
+            <div class='row'>
+                <section>
+                    <h1 class="headingUnderline">{{ entry.title }}</h2>
+                        {{ macros.outputMatrix(entry.articleMain) }}
+                </section>
+            </div>
+        </main>
+    </div>
+{% endblock %}

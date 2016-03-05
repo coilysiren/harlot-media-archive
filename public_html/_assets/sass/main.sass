@@ -437,10 +437,6 @@ ul
     figure
         margin: 0
 
-// .container.standard
-//     @media (min-width: $mobile-breakpoint) and (max-width: $tablet-breakpoint)
-//         width: 850px
-
 .profilePicture
     border: 1px solid rgba(200, 200, 200, 0.8)
 
@@ -549,11 +545,6 @@ aside
             margin: 0
             line-height: 1.2rem
 
-.contributor-list
-    li
-        text-align: center
-        margin-top: 15px
-
 .user-card
     .picture
         padding: 0 5px 5px
@@ -570,11 +561,6 @@ aside
         > *
             text-decoration: none
             color: orange
-
-#page-donate
-    h2
-        @media (min-width: $mobile-breakpoint)
-            width: 50%
 
 .aboutPage
 
@@ -603,9 +589,9 @@ main.container-fluid.main-full
     @media (min-width: $mobile-breakpoint)
         padding-right: 50px
 
-    .row
-        > div
-            padding: 0
+    h1, h2
+        @media (min-width: $mobile-breakpoint)
+            width: 50%
 
 main.container-fluid
     margin-left: -15px
@@ -649,6 +635,24 @@ main.container-fluid
 
     @media (max-width: $mobile-breakpoint)
         margin: 0 0 45px 0
+
+#content_warnings_list
+    p
+        display: inline
+    strong
+        color: $red
+    li
+        margin: 30px 0
+
+#contributor_list
+    ul
+        display: flex
+        align-items: stretch
+        flex-wrap: wrap
+
+    li
+        text-align: center
+        margin-top: 15px
 
 #infographic
     font-size: 16px
@@ -1083,14 +1087,6 @@ i.fa
 
 i.fa-google-plus
     font-size: 28px
-
-#tag-list
-    p
-        display: inline
-    strong
-        color: $red
-    li
-        margin: 30px 0
 
 figure img
     width: 100%
