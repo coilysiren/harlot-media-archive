@@ -6,6 +6,7 @@ $desktop-breakpoint: 1220px
 
 $gray: rgb(86, 88, 90)
 $red: #96052f
+$blue: #39B7CD
 $beige: #FAF6F3
 $yellow: #E2C75D
 $brown: #AB9154
@@ -915,7 +916,7 @@ main .homepage-section
         margin-top: 14px
         border-color: $red
 
-article
+article.article
 
     margin: 0
 
@@ -924,15 +925,21 @@ article
         font-size: 2em
         width: 100%
 
-    figure
-        .caption
-            font-size: 0.7em
-            line-height: 1.4em
-            color: $gray
-            text-align: center
-            p
-                margin-top: 15px
-                margin-bottom: 0
+    .caption
+        font-size: 0.7em
+        line-height: 1.4em
+        color: $gray
+        text-align: center
+        p
+            margin-top: 15px
+            margin-bottom: 0
+
+    .article-content
+        a
+            color: $blue
+        a:hover, a:focus
+            text-decoration: underline
+            color: darken($blue, 20%)
 
     figure.imageHalf, figure.imageThird
         margin-top: 15px
