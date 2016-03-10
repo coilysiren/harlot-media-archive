@@ -14,7 +14,6 @@ function hide_ellipses() {
         description_bottom = $(this).find(".description-end")[0].getBoundingClientRect()["bottom"]
         if (description_bottom < (content_bottom+5))
             $(this).find(".overflow-fade").css("display", "none")
-            console.log('overflowing')
     })
 }
 
