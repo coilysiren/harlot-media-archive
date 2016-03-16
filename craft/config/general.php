@@ -20,8 +20,10 @@ return array(
     ),
     'harlot.media' => array(
         'siteUrl' => 'http://harlot.media',
+        'cache' => true,
     ),
     'localhost' => array(
-        'siteUrl' => 'http://localhost'
+        'siteUrl' => 'http://localhost',
+        'cache' => false,
     ),
 );

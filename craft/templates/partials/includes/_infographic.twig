@@ -11,6 +11,8 @@ var graphdata = {
 
 #}
 
+{% cache for 1 day unless (craft.config.devMode or craft.config.cache) %}
+
 {% set all_users = craft.users.limit(null) %}
 {% set tags = craft.tags.relatedTo(all_users).group('identities').limit(null) %}
 <script src="//d3js.org/d3.v3.min.js"></script>
@@ -88,3 +90,5 @@ var graphdata = {
     d3.select(window).on('resize', draw)
 
 </script>
+
+{% endcache %}
