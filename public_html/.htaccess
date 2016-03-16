@@ -54,14 +54,15 @@
     </IfModule>
   </IfVersion>
 
-  <IfModule !mod_filter.c>
-    AddOutputFilterByType DEFLATE text/html text/plain text/css application/json
-    AddOutputFilterByType DEFLATE application/javascript
-    AddOutputFilterByType DEFLATE text/xml application/xml text/x-component
-    AddOutputFilterByType DEFLATE application/xhtml+xml application/rss+xml application/atom+xml
-    AddOutputFilterByType DEFLATE image/x-icon image/svg+xml application/vnd.ms-fontobject application/x-font-ttf font/opentype
-  </IfModule>
+</IfModule>
 
+
+<IfModule !mod_filter.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css application/json
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE text/xml application/xml text/x-component
+  AddOutputFilterByType DEFLATE application/xhtml+xml application/rss+xml application/atom+xml
+  AddOutputFilterByType DEFLATE image/x-icon image/svg+xml application/vnd.ms-fontobject application/x-font-ttf font/opentype
 </IfModule>
 
 
@@ -81,10 +82,11 @@
   ExpiresByType application/rss+xml       "access plus 1 hour"
   ExpiresByType application/atom+xml      "access plus 1 hour"
 
-  ExpiresByType image/gif                 "access plus 1 week"
-  ExpiresByType image/png                 "access plus 1 week"
-  ExpiresByType image/jpeg                "access plus 1 week"
   ExpiresByType image/x-icon              "access plus 1 week"
+
+  ExpiresByType image/gif                 "access plus 1 month"
+  ExpiresByType image/png                 "access plus 1 month"
+  ExpiresByType image/jpeg                "access plus 1 month"
   ExpiresByType video/ogg                 "access plus 1 month"
   ExpiresByType audio/ogg                 "access plus 1 month"
   ExpiresByType video/mp4                 "access plus 1 month"
@@ -98,8 +100,8 @@
   ExpiresByType image/svg+xml             "access plus 1 month"
   ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
 
-  ExpiresByType text/css                  "access plus 1 month"
-  ExpiresByType application/javascript    "access plus 1 month"
+  ExpiresByType text/css                  "access plus 1 year"
+  ExpiresByType application/javascript    "access plus 1 year"
 </IfModule>
 
 
