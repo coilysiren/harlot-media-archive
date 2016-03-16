@@ -62,16 +62,20 @@
             <div class="article-content">
                 {{ macros.outputMatrix(entry.articleMain) }}
             </div>
-
-            {% if entry.subjectTags | length %}
-                <div class="related">
-                    <span class="related-header">Related Topics:</span>
-                    {% for tag in entry.subjectTags %}
-                        {{ macros.showTag(tag) }}
-                    {% endfor %}
-                </div>
-            {% endif %}
         </div>
+
+        <div>
+            <p class="text-center">Like this? Want more? Support the snark through <a href="https://www.patreon.com/harlotmedia?ty=h">Patreon</a></p>
+        </div>
+
+        {% if entry.subjectTags | length %}
+            <div class="related">
+                <span class="related-header">Related Topics:</span>
+                {% for tag in entry.subjectTags %}
+                    {{ macros.showTag(tag) }}
+                {% endfor %}
+            </div>
+        {% endif %}
 
         <cite class="writer">
             <div class="name"><a href="{{ siteUrl }}authors/{{ writer.username|url_encode }}">{{ writer.name }}</a></div>
