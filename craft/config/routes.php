@@ -22,7 +22,7 @@ return array(
     'search' => 'pages/_search',
     'articles/more' => 'pages/_more_articles',
     'category/(?P<category>\w*)' => 'pages/_category',
-    'tags/(?P<tag>\w*)' => 'pages/_tag',
+    'tags/(?P<tag>[\w\s]*)' => 'pages/_tag',
     'authors/(?P<author>\w*)' => 'pages/_user',
     'people/(?P<author>\w*)' => 'pages/_user',
     'articles/(?P<article_id>[0-9]+)[\s\S]*' => 'pages/_article',

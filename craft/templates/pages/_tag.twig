@@ -2,10 +2,6 @@
 {% set tag = craft.tags.title(tag).first() %}
 {% set entries = craft.entries.relatedTo(tag).limit(null).order('dateCreated') %}
 
-{% if not tag %}
-    {% exit 404 %}
-{% endif %}
-
 {% block main_content %}
 
     {% if entries | length %}
