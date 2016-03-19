@@ -1,1 +1,12 @@
 {% set entry = craft.entries.section('advertisements').type('boxAds').order('RAND()').first() %}
+
+{% if entry %}
+
+<section id="box-ad">
+    <header>Advertisement</header>
+    <div class="ad-holder">
+        <a href="{{ entry.adLink }}"><img src="{{ entry.adPicture.first.url }}" width="300px" height="300px"></a>
+    </div>
+</section>
+
+{% endif %}
