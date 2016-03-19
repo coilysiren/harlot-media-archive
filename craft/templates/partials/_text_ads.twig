@@ -1,0 +1,14 @@
+{% set entries = craft.entries.section('advertisements').type('textAds') %}
+
+{% if entries|length > 0 %}
+
+<section id="text-ads">
+    <header>Harlot Loves</header>
+    <ul>
+        {% for entry in entries %}
+            <li><a href="{{ entry.adLink }}">{{ entry.adText }}</a></li>
+        {% endfor %}
+    </ul>
+</section>
+
+{% endif %}
