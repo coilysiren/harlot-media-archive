@@ -184,64 +184,14 @@ $nav-shadow-3: 0 0 0 2px rgba(0,0,0,0.05)
         margin-top: -100px
         box-shadow: inset $nav-shadow-1, inset $nav-shadow-2, inset $nav-shadow-3
 
-$ad_background: rgba(0,0,0,0.025)
+#paid-placement-text
+    ul
+        padding-left: 15px
 
-.advertisement
-    margin-left: -15px
-    background: $ad_background
-
-    @media (min-width: $mobile-breakpoint)
-        border-radius: 20px
-
-.sidebar-ad
-    text-align: center
-    padding-top: 0
-    padding-bottom: 10px
-
-    header
-        line-height: 0.8em
-        font-size: 2em
-        padding-top: 10px
-        border-bottom: 1px solid rgba($red,0.1)
-
-    .flex
-        display: flex
-        align-items: center
-        justify-content: center
-
-    @media (max-width: $mobile-breakpoint)
-        margin-top: $mobile-verticle-padding/2
-
-.header-ad
-    margin-top: 0
-
-    .reference-point
-        width: auto
-
-        @media (max-width: $mobile-breakpoint)
-            text-align: center
-
-        @media (min-width: $mobile-breakpoint)
-            text-align: left
-
-        div
-            background: $ad_background
-            position: static
-            display: inline-block
-
-            @media (max-width: $mobile-breakpoint)
-                display: block
-                margin-right: -15px
-                padding-right: 15px
-
-            @media (min-width: $mobile-breakpoint)
-                border-radius: 10px
-                padding: 0 10px
-
-        header
-            text-align: center
-            font-size: 1.5em
-            color: $red
+    ul, li
+        list-style-type: disc
+        list-style-position: inside
+        color: $red
 
 #nav-bottom-fade
     position: absolute
@@ -501,15 +451,6 @@ aside
 #box-ad
     .ad-holder
         text-align: center
-
-#text-ads
-    ul
-        padding-left: 15px
-
-    ul, li
-        list-style-type: disc
-        list-style-position: inside
-        color: $red
 
 .headingUnderline
     border-bottom: 1px solid $red
