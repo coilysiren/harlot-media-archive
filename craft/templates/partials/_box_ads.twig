@@ -5,13 +5,13 @@
 <section class="paid-placement-box">
     <header>Advertisements</header>
     <div class="holder">
-    {% for entry in entries[:2] %}
+    {% for entry in entries %}
         <div class="entry">
             <div class="image">
                 <a href="{{ entry.adLink }}"><img alt="{{ entry.adText }}" title="{{ entry.adText }}" src="{{ entry.adPicture.first.url }}" width="150px" height="150px"></a>
             </div>
             <div class="text">
-                <a href="{{ entry.adLink }}"><span>{{ entry.adText }}&nbsp;</span></a>
+                <a href="{{ entry.adLink }}"><span>{{ entry.adText }}</span></a>
             </div>
         </div>
     {% endfor %}
