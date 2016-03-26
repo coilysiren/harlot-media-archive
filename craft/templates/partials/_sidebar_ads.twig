@@ -1,27 +1,28 @@
 {% set box_entries = craft.entries.section('advertisements').type('boxAds').order('RAND()') %}
-{% set long_entries = craft.entries.section('advertisements').type('sideLongAds').order('RAND()') %}
+{% set long_entries = craft.entries.section('advertisements').type('sidebarLongAds').order('RAND()') %}
 
 {% if (box_entries|length > 0) or (long_entries|length > 0) %}
 
 <section class="paid-placement-box">
     <header>Advertisements</header>
-    <div>
-    {% for entry in long_entries %}
+    <div class="holder">
+    {% for long_entry in long_entries %}
         <div class="entry entry-long">
             <div class="image">
-                <a href="{{ entry.adLink }}"><img alt="{{ entry.adText }}" title="{{ entry.adText }}" src="{{ entry.adPicture.first.url }}" width="250px" height="150px"></a>
+                <a href="{{ long_entry.adLink }}"><img alt="{{ long_entry.adText }}" title="{{ long_entry.adText }}" src="{{ long_entry.adPicture.first.url }}" width="250px" height="150px"></a>
+            </div>
             <div class="text">
-                <a href="{{ entry.adLink }}"><span>{{ entry.adText }}</span></a>
+                <a href="{{ long_entry.adLink }}"><span>{{ long_entry.adText }}</span></a>
             </div>
         </div>
     {% endfor %}
-    {% for entry in box_entries %}
+    {% for box_entry in box_entries %}
         <div class="entry">
             <div class="image">
-                <a href="{{ entry.adLink }}"><img alt="{{ entry.adText }}" title="{{ entry.adText }}" src="{{ entry.adPicture.first.url }}" width="150px" height="150px"></a>
+                <a href="{{ box_entry.adLink }}"><img alt="{{ box_entry.adText }}" title="{{ box_entry.adText }}" src="{{ box_entry.adPicture.first.url }}" width="150px" height="150px"></a>
             </div>
             <div class="text">
-                <a href="{{ entry.adLink }}"><span>{{ entry.adText }}</span></a>
+                <a href="{{ box_entry.adLink }}"><span>{{ box_entry.adText }}</span></a>
             </div>
         </div>
     {% endfor %}
