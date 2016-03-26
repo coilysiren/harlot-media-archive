@@ -1,66 +1,43 @@
 {% set entries = craft.entries.section('pages').level(2) %}
 
-<div id='margo-nav'>
+<div class="nav-container">
+  <div id='nav-top-shadow' class='hide-small'><div></div></div>
+  <nav>
 
-  <div id='margo'><a href="/"><img src='/uploads/assets/margo.jpg' alt='harlot logo'></a></div>
+    <button id="nav-menu-button" type="button" data-toggle="dropdown" class="nav-button" aria-controls='#nav-menu' aria-haspopup="true" aria-expanded="false">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
 
-  <div class="nav-container">
+    <a class="nav-button" href="/">
+      <i class="fa fa-home"></i>
+    </a>
 
-    <div id='nav-top-shadow' class='hide-small'><div></div></div>
-    <nav>
+    <button type="button" class="nav-button" data-toggle="modal" data-target="#search_modal">
+      <i class='fa fa-search'></i>
+    </button>
 
-      <button id="nav-menu-button" type="button" data-toggle="dropdown" class="nav-button" aria-controls='#nav-menu' aria-haspopup="true" aria-expanded="false">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+    {% include 'partials/includes/_social_links.twig' %}
 
-      <button type="button" class="nav-button" data-toggle="modal" data-target="#search_modal">
-        <i class='fa fa-search'></i>
-      </button>
+    <a class="nav-button" href="/rss">
+      <i class="fa fa-rss"></i>
+    </a>
 
-      {% include 'partials/includes/_social_links.twig' %}
-
-      <a class="nav-button" href="/rss">
-        <i class="fa fa-rss"></i>
-      </a>
-
-      <div id="nav-menu">
-        <ul>
-          {% for entry in entries %}
-            <li><a href='{{ entry.url }}'><span>
-              {% if entry.linkTitle|length > 0 %}
-                  {{ entry.linkTitle }}
-              {% else %}
-                  {{ entry.title }}
-              {% endif %}
-            </span></a></li>
-          {% endfor %}
-        </ul>
-      </div>
-
-    </nav>
-    <div id='nav-side-shadow' class='hide-small'><div></div></div>
-    <div id='nav-bottom-fade' class='hide-small'></div>
-
-  </div>
-
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="search_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Search</h4>
-      </div>
-      <div class="modal-body">
-        <form action="/search" style="display: flex">
-          <input type="search" value="" name="search" class="input" required style="max-width: none; border-radius: 10px; margin-right: 10px; background-color: rgb(230, 230, 230);">
-          <input type="submit" value="Go" id="search-go" class="button">
-        </form>
-      </div>
+    <div id="nav-menu">
+      <ul>
+        {% for entry in entries %}
+          <li><a href='{{ entry.url }}'><span>
+            {% if entry.linkTitle|length > 0 %}
+                {{ entry.linkTitle }}
+            {% else %}
+                {{ entry.title }}
+            {% endif %}
+          </span></a></li>
+        {% endfor %}
+      </ul>
     </div>
-  </div>
+
+  </nav>
+  <div id='nav-side-shadow' class='hide-small'><div></div></div>
 </div>

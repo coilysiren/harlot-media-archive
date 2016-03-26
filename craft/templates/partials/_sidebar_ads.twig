@@ -1,0 +1,31 @@
+{% set box_entries = craft.entries.section('advertisements').type('boxAds').order('RAND()') %}
+{% set long_entries = craft.entries.section('advertisements').type('sideLongAds').order('RAND()') %}
+
+{% if (box_entries|length > 0) or (long_entries|length > 0) %}
+
+<section class="paid-placement-box">
+    <header>Advertisements</header>
+    <div>
+    {% for entry in long_entries %}
+        <div class="entry entry-long">
+            <div class="image">
+                <a href="{{ entry.adLink }}"><img alt="{{ entry.adText }}" title="{{ entry.adText }}" src="{{ entry.adPicture.first.url }}" width="250px" height="150px"></a>
+            <div class="text">
+                <a href="{{ entry.adLink }}"><span>{{ entry.adText }}</span></a>
+            </div>
+        </div>
+    {% endfor %}
+    {% for entry in box_entries %}
+        <div class="entry">
+            <div class="image">
+                <a href="{{ entry.adLink }}"><img alt="{{ entry.adText }}" title="{{ entry.adText }}" src="{{ entry.adPicture.first.url }}" width="150px" height="150px"></a>
+            </div>
+            <div class="text">
+                <a href="{{ entry.adLink }}"><span>{{ entry.adText }}</span></a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</section>
+
+{% endif %}

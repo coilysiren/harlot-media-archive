@@ -20,6 +20,9 @@ $font-excellentia: "excellentiaregular", "mrs_lolitaregular", italic
 $font-mslolita: "mrs_lolitaregular", italic
 $font-labelmachine: "label_machine", monospace
 
+@mixin articleShadow
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2)
+
 html, body, article
     font-size: 20px
     line-height: 30px
@@ -97,6 +100,12 @@ header
     text-align: center
     font-family: $font-excellentia
 
+#header-row
+    margin-bottom: 30px
+
+    @media (max-width: $mobile-breakpoint)
+        display: flex
+
 .subtext
     &, &:visited
         color: $gray
@@ -135,54 +144,65 @@ textarea
     @media (max-width: $mobile-breakpoint)
         width: 100%
 
-#margo-nav
-    position: absolute
+.header-object
+    display: inline-block
 
-#margo
-    margin-left: -100%
+#main-header-title
+    font-size: 65px
+    line-height: 45px
+    margin-top: 40px
 
-    @media (min-width: $mobile-breakpoint)
-        margin-right: 45px
+    a
+        color: $gray
+        &:visited
+            color: $gray
+        &:hover, &:focus
+            color: $red
+            text-decoration: none
 
     @media (max-width: $mobile-breakpoint)
-        margin-left: 0
-        margin-top: -20px
+        span
+            white-space: nowrap
+            display: inline-block
 
-    img
-        width: 80%
-        float: right
-
-$nav-shadow-1: 0 0 8px 10px rgba(0,0,0,0.075)
-$nav-shadow-2: 0 0 3px 5px rgba(0,0,0,0.1)
-$nav-shadow-3: 0 0 0 2px rgba(0,0,0,0.05)
-
-#nav-top-shadow
-    $height: 350px
-
-    position: absolute
-    height: $height
-    width: 70px
-    top: -$height+20px-1px
-    padding-bottom: 20px
-    padding-right: 20px
-    overflow-x: hidden
-
-    div
+    @media (max-width: $mobile-breakpoint)
         width: 100%
-        height: 100%
-        border-bottom-right-radius: 5px
-        box-shadow: $nav-shadow-1, $nav-shadow-2, $nav-shadow-3
+    @media (min-width: $mobile-breakpoint)
+        width: 49%
+    @media (min-width: $tablet-breakpoint)
+        width: 65%
 
-#nav-side-shadow
-    overflow: hidden
-    height: 100%
-    padding-top: 70px
+#margo
+    @media (max-width: $mobile-breakpoint)
+        width: 80%
+        margin: 0 auto
+    @media (min-width: $mobile-breakpoint)
+        width: 50%
+    @media (min-width: $tablet-breakpoint)
+        width: 33%
+    img
+        width: 100%
 
-    div
-        height: 200%
-        width: 150%
-        margin-top: -100px
-        box-shadow: inset $nav-shadow-1, inset $nav-shadow-2, inset $nav-shadow-3
+
+$page-shadow-1: 0 0 8px 10px rgba(0,0,0,0.075)
+$page-shadow-2: 0 0 3px 5px rgba(0,0,0,0.1)
+$page-shadow-3: 0 0 0 2px rgba(0,0,0,0.05)
+
+@media (min-width: $mobile-breakpoint)
+    #page-shadow-holder
+        .left
+            .shadow
+                box-shadow: $page-shadow-1, $page-shadow-2, $page-shadow-3
+        .right
+            .shadow
+                box-shadow: inset $page-shadow-1, inset $page-shadow-2, inset $page-shadow-3
+        .fade-bottom
+            position: absolute
+            bottom: 0
+            height: 30px
+            width: 15px
+            background-image: linear-gradient(to top, $beige 10px, transparent)
+
 
 #paid-placement-text
     ul
@@ -204,33 +224,26 @@ $nav-shadow-3: 0 0 0 2px rgba(0,0,0,0.05)
         width: 150px
         font-weight: bold
 
-#nav-bottom-fade
-    position: absolute
-    bottom: 0
-    height: 30px
-    width: 15px
-    background-image: linear-gradient(to top, $beige 10px, transparent)
+    .entry-long
+        width: 100%
+
+        .text
+            width: 250px
+
 
 .nav-container
-    height: 100%
-    width: 50px
-    position: absolute
+    position: fixed
+    top: 0
     right: 0
-    top: 65%
+    z-index: 1000
+    padding: 20px
+    background-color: rgba($beige, 0.35)
+    border-radius: 20px
 
     @media (max-width: $mobile-breakpoint)
-        width: 120%
-        margin: -30px 0 0 -10%
-        top: 10px
-        right: 0
-        left: 0
+        right: auto
 
 nav
-    position: absolute
-    margin-bottom: 0
-    padding: 1px 2px
-    width: 100%
-
     @media (max-width: $mobile-breakpoint)
         margin-left: 8%
         width: 92%
@@ -246,10 +259,6 @@ nav
         background-color: $darkgray
         margin-top: 0
         padding: 10px 0 0
-        z-index: 200
-
-        @media (max-width: $mobile-breakpoint)
-            margin-top: 30px
 
         span
             display: block
@@ -275,13 +284,13 @@ nav
         text-align: center
         height: 0
         width: 0
-        top: 0
+        top: 20px
         right: 40px
         background-color: $darkgray
         overflow: hidden
         transition-property: right
         transition-duration: 0.1s
-        z-index: 100
+        border-radius: 10px
 
         ul
             @media (max-width: $mobile-breakpoint)
@@ -317,15 +326,19 @@ nav
 
     &.open #nav-menu
         display: inherit
-        right: 100px
+        right: 80px
         width: auto
         height: auto
 
         @media (max-width: $mobile-breakpoint)
-            left: -30px
-            right: auto
-            width: 110%
-            padding: 15px 15% 0 100px
+            position: fixed
+            left: 0
+            right: 0
+            top: 0
+            width: 100%
+            padding: 0 15% 0 100px
+            border-radius: 0
+            z-index: -1
 
     .nav-button
         display: block
@@ -339,7 +352,6 @@ nav
         box-shadow: 1px 2px 0 1px rgba(0,0,0,0.1)
         margin: 6px 0
         padding: 0
-        z-index: 200
 
         @media (max-width: $mobile-breakpoint)
             display: none
@@ -397,42 +409,7 @@ ul
     @media (min-width: $tablet-breakpoint)
         margin-bottom: 10%
 
-header.title
-    font-size: 55px
-    line-height: 45px
-    margin-top: 40px
-    width: 70%
-
-    a
-        color: $gray
-
-        &:visited
-            color: $gray
-
-        &:hover, &:focus
-            color: $red
-            text-decoration: none
-
-    @media (max-width: $mobile-breakpoint)
-        margin-top: 35%
-        width: 40%
-
-        span
-            white-space: nowrap
-            display: inline-block
-
 #sidebar-column
-    @media (min-width: $mobile-breakpoint)
-        margin-top: 200px
-        &.inline-aside
-            margin-top: 50%
-
-    @media (min-width: $mobile-breakpoint) and (max-width: $tablet-breakpoint)
-        margin-top: 160px
-
-    @media (min-width: $tablet-breakpoint)
-        margin-top: 15%
-
     @media (max-width: $mobile-breakpoint)
         padding-right: 0
         margin-top: $mobile-verticle-padding
@@ -550,6 +527,9 @@ main.container-fluid
     margin-right: -15px
 
     section
+        h1
+            margin-top: 0
+
         @media (max-width: $mobile-breakpoint)
             padding: 0 15px $mobile-verticle-padding
 
@@ -558,11 +538,7 @@ main.container-fluid
             padding-bottom: 0
 
     > *
-        padding-top: 100px
         padding-bottom: $mobile-verticle-padding
-
-        @media (max-width: $tablet-breakpoint)
-            padding-top: $mobile-verticle-padding
 
         @media (min-width: $mobile-breakpoint)
             padding-right: 15px
@@ -583,7 +559,7 @@ main.container-fluid
             color: #deab17
 
 #support-button-upper
-    margin: 15px 60px 25px 0
+    margin: 0 0 20px 0
 
     @media (max-width: $mobile-breakpoint)
         margin: 0 0 45px 0
@@ -665,15 +641,13 @@ input
         font-weight: bold
         padding: 4px 15px
         margin-left: 2px
-        margin-top: 5px
-        margin-bottom: 5px
+        margin-top: 1px
+        margin-bottom: 2px
+        border-radius: 5px
 
         &:hover, &:focus
             color: $red
             outline: 1px solid $yellow
-
-@mixin articleShadow
-    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2)
 
 .articleList
 

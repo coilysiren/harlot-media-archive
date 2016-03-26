@@ -12,20 +12,21 @@
 
     <div id='page-error-section'>{% block page_error_section %}{% endblock %}</div>
 
+    {% include 'partials/_nav' %}
+    {% include 'partials/_search_modal' %}
+
     <div id='content-top' class="body-flex">
         <div class="container">
             <div class='row'>
 
-                <div id="nav-column" class='col-sm-5 col-md-4'>
-                    {% include 'partials/_nav' %}
-                </div>
+                {% include 'partials/_page_shadow' %}
 
-                <div id='header-column' class='col-sm-7 col-md-8'>
+                <div id='header-row'>
                     {% include 'partials/_header' %}
                 </div>
 
                 {% block main_block %}
-                    <div id="main-column" class='col-sm-7 col-md-8'>
+                    <div id="main-column" class='col-sm-6 col-md-8'>
                         <main class='container-fluid'>
                             <div class='row'>
                                 {% block main_content %}{% endblock %}
@@ -34,13 +35,13 @@
                     </div>
 
                 {% block aside_block %}
-                    <div id="sidebar-column" class='col-sm-5 col-md-4'>
+                    <div id="sidebar-column" class='col-sm-6 col-md-4'>
                         <aside>
                             {% block aside_content %}
                                 {% include 'partials/_support_upper' %}
                                 {% include 'partials/_subscribe' %}
                                 {% include 'partials/_featured' %}
-                                {% include 'partials/_box_ads' %}
+                                {% include 'partials/_sidebar_ads' %}
                                 {% include 'partials/_contributors' %}
                                 {% include 'partials/_text_ads' %}
                             {% endblock %}
