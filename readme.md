@@ -8,15 +8,10 @@ php + addons
 
 get craft
 
-    curl -L http://craftcms.com/latest.tar.gz?accept_license=yes -o craft_install.tar.gz
-    tar -xvzf craft_install.tar.gz
-    rm -f craft_install.tar.gz readme.txt
-    mv public public_html
-    sudo chmod 0777 -R craft/
-
-sync source code
-
-    git pull git@gitlab.com:cyrin/harlot-media.git
+    bash <(curl -s https://raw.githubusercontent.com/mattstauffer/makeItCraft/master/makeItCraft.sh)
+    git clone git@gitlab.com:cyrin/harlot-media.git tmp
+    mv tmp/.git .git
+    git checkout .
 
 sync database
 
