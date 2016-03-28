@@ -18,6 +18,7 @@ Database setup
 Apache setup
 
     ln -s /home/apps/harlot-media/bin/harlot-media-apache.conf /etc/apache2/sites-enabled/
+    # apache2.conf
 
 sync database
 
