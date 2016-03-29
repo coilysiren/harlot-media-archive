@@ -44,19 +44,19 @@
                 {% endif %}
             {% endfor %}
     {% else %}
-        <meta name="og:image" property="og:image" content="http://harlot.media/uploads/assets/logo.png" />
-        <meta name="twitter:image" content="http://harlot.media/uploads/assets/logo.png" />
+        <meta name="og:image" property="og:image" content="http://s3-us-west-2.amazonaws.com/harlot-media/logo.png" />
+        <meta name="twitter:image" content="http://s3-us-west-2.amazonaws.com/harlot-media/logo.png" />
     {% endif %}
 {% else %}
     <meta property="og:type" content="website" />
     <meta name="og:url"  property="og:url" content="http://harlot.media" />
-    <meta name="og:image" property="og:image" content="http://harlot.media/uploads/assets/logo.png" />
-    <meta name="twitter:image" content="http://harlot.media/uploads/assets/logo.png" />
+    <meta name="og:image" property="og:image" content="http://s3-us-west-2.amazonaws.com/harlot-media/logo.png" />
+    <meta name="twitter:image" content="http://s3-us-west-2.amazonaws.com/harlot-media/logo.png" />
     <link rel="canonical" href="{{ siteUrl }}" />
 {% endif %}
 
 {# resources #}
 <link rel="home" href="{{ siteUrl }}" />
-<link rel="icon" href="/uploads/assets/favicon.png" />
+<link rel="icon" href="http://s3-us-west-2.amazonaws.com/harlot-media/favicon.png" />
 <link rel="stylesheet" href="/_assets/css/assets.css" />
 <link rel="stylesheet" href="{{ craft.bust.er('/_assets/css/main.css') }}" />

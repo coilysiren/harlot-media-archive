@@ -46,7 +46,7 @@ html, body
     display: none
 
 #ripped-border
-    background-image: url(/uploads/assets/ripped-1.png)
+    background-image: url(http://s3-us-west-2.amazonaws.com/harlot-media/ripped-1.png)
     background-size: auto 101%
     margin-bottom: -35px
     height: 40px
@@ -61,7 +61,7 @@ html, body
 
 #content-bottom
     background-color: $red
-    background-image: url(/uploads/assets/background-red.png)
+    background-image: url(http://s3-us-west-2.amazonaws.com/harlot-media/background-red.png)
 
 .reference-point
     width: 0
@@ -105,6 +105,7 @@ header
 
     @media (max-width: $mobile-breakpoint)
         display: flex
+        flex-direction: column
 
 .subtext
     &, &:visited
@@ -151,6 +152,7 @@ textarea
     font-size: 65px
     line-height: 45px
     margin-top: 40px
+    order: 1
 
     a
         color: $gray
@@ -161,6 +163,7 @@ textarea
             text-decoration: none
 
     @media (max-width: $mobile-breakpoint)
+        padding: 0 20px
         span
             white-space: nowrap
             display: inline-block
@@ -242,6 +245,7 @@ $page-shadow-3: 0 0 0 2px rgba(0,0,0,0.05)
 
     @media (max-width: $mobile-breakpoint)
         right: auto
+        padding: 10px
 
 nav
     @media (max-width: $mobile-breakpoint)
