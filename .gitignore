@@ -4,4 +4,3 @@ craft/storage/*
 public_html/uploads/*
 license.key
 .env*
-public_html/_assets/css/main.css*
