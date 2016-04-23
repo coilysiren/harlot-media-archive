@@ -7,7 +7,7 @@
         <ul>
             {% for entry in entries %}
                 <li>
-                    <div class="headerImage"><a href="{{ entry.url }}">{{ macros.smallImage(entry.headerImage) }}</div></a>
+                    <div class="headerImage"><a href="{{ entry.url }}">{{ macros.basicImage(entry.headerImage) }}</div></a>
                     <div class="articleText">
                         <div><div class='heading'><a href="{{ entry.url }}">{{ entry.title }}</a>{{ macros.contentWarnings(entry) }}</div></div>
                         <div class="author"><a href="/authors/{{ entry.writer.first().username|url_encode }}"><span class="subtext">by {{ entry.writer.first().name }}</span></a></div>

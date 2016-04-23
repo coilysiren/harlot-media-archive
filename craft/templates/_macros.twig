@@ -2,6 +2,7 @@
     <a class="tag" href="{{ siteUrl }}tags/{{ tag|url_encode }}"><span>{{ tag|lower }}</span></a>
 {% endmacro %}
 
+
 {% macro formatDateTime(dateTime) %}
     {{ dateTime|date("F d, Y g:ia T") }}
 {% endmacro %}
@@ -17,20 +18,22 @@
 {% endmacro %}
 
 
-{% macro smallImage(imagefield) %}
-    {% set image = imagefield.first() %}
-    <img src="{{ image.url }}" width="100%;" alt="{{ image.title }}" title="{{ image.title }}">
-{% endmacro %}
-
-
 {% macro basicImage(imagefield) %}
     {% set image = imagefield.first() %}
-    <img src="{{ image.url }}" alt="{{ image.title }}" title="{{ image.title }}">
+    <img width="100%;"
+    src="{{   image.url     | default('http://s3-us-west-2.amazonaws.com/harlot-media/margo.jpg') }}"
+    alt="{{   image.title   | default('article image') }}"
+    title="{{ image.title   | default('article image') }}"
+    >
 {% endmacro %}
 
 
 {% macro authorImage(author, size=100) %}
-    <img width="100%;" class='profilePicture' src="{{ author.photoUrl(size) }}" alt="{{ author.name }}'s profile picture" title="{{ author.name }}'s profile picture">
+    <img width="100%;" class='profilePicture'
+    src="{{   author.photoUrl(size) | default('https://s3-us-west-2.amazonaws.com/harlot-media/ANONYMOUS-PEN.jpg') }}"
+    alt="{{   author.name           | default('profile picture') }}"
+    title="{{ author.name           | default('profile picture') }}"
+    >
 {% endmacro %}
 
 
@@ -57,7 +60,7 @@
     {% if entry.writer.first().name is defined %}
         <li class="{% if single %}col-sm-12{% else %}col-md-{{ width }} col-sm-12{% endif %}">
             <div class="article-preview-container {% if single %}single{% else %}dual{% endif %}">
-                <a style="background-image: url('{{ image.url }}')" class="header-image" href="{{ entry.url }}"></a>
+                <a style='background-image: url({{ image.url | default("http://s3-us-west-2.amazonaws.com/harlot-media/margo.jpg") }})' class="header-image" href="{{ entry.url }}"></a>
                 <div class="slantbox">
                     <div class="reference-point"><div class="slant-border border-top"></div></div>
                     <div class="content">
@@ -149,12 +152,14 @@
                     "
                 >
                 {# ANCOR #}
-                    {% if block.href %}<a href="{{ block.href }}" target="{% if block.blank %}_blank{% endif %}">{% endif %}
+                    {% if block.href %}
+                        <a href="{{ block.href }}" target="{% if block.blank %}_blank{% endif %}">
+                    {% endif %}
                         <img src="{{ image.getUrl(transformtype) }}" alt="{{ image.title }}"/>
                     {% if block.href %}</a>{% endif %}
                 {# /ANCOR #}
                 {# IMAGE #}
-                    {% if block.imageCaption != '' %}
+                    {% if block.imageCaption != "" %}
                         <caption><div class="caption">{{ block.imageCaption }}</div></caption>
                     {% endif %}
                 {# /IMAGE #}
