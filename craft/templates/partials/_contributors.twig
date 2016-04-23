@@ -1,4 +1,4 @@
-{% cache globally for 1 day unless (craft.config.devMode or craft.config.cache) %}
+{% cache globally for 1 day unless craft.config.devMode %}
 
 {% set users_parttime = craft.users.relatedTo(craft.categories.slug('parttime-contract').first()).order('RAND()').limit(1) %}
 {% set users_writers = craft.users.relatedTo(craft.categories.slug('writer').first()).order('RAND()').limit(3) %}

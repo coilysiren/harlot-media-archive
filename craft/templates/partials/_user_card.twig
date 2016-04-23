@@ -6,6 +6,16 @@
             {{ macros.authorImage(user, 200) }}
         </a>
     </div>
-        <div class="name"><a href="/authors/{{ user.username|url_encode }}"><span>{{ user.name }}</span></a></div>
-        <div class="title"><span style='font-size: 0.9em;'>{{ user.userTitle }}</span>&nbsp;</div>
+    <div class="name">
+        <a href="/authors/{{ user.username|url_encode }}">
+            <span>{{ user.name }}</span>
+        </a>
+    </div>
+    <div class="title">
+        {% if user.userTitle|length > 1 %}
+            <span>{{ user.userTitle }}</span>
+        {% else %}
+            <span>&nbsp;</span>
+        {% endif %}
+    </div>
 </div>

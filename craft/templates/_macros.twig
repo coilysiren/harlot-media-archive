@@ -75,7 +75,7 @@
 
 
 {% macro outputMatrix(matrixfield) %}
-{% cache for 1 day unless (craft.config.devMode or craft.config.cache) %}
+{% cache for 1 day unless craft.config.devMode %}
 
     {% set grid_active = false %}
     {% set grid_first_element = false %}
